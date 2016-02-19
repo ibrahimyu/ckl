@@ -1,0 +1,20 @@
+<ion-view title="Packages">
+	<ion-content class="padding">
+		<ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
+		<loading-box>
+			<button class="button button-balanced mbot icon icon-left ion-plus" ui-sref="tabs.addPackage">Add Package</button>
+
+			<ion-list can-swipe="true">
+				<ion-item ng-repeat="package in packages">
+					<div class="item-buttons">
+						<button class="button button-calm button-small icon ion-edit" ui-sref="tabs.editPackage({ id: package.id })"></button>
+						<button class="button button-assertive button-small icon ion-close" ng-click="confirmDelete(package)"></button>
+					</div>
+					<h3>{{ package.package_name }}</h3>
+					<small>{{ package.price | currency: 'Rp ' }}, {{ package.processing_time }} hours</small>
+
+				</ion-item>
+			</ion-list>
+		</loading-box>
+	</ion-content>
+</ion-view>

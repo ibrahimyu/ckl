@@ -1,0 +1,31 @@
+<ion-view title="View Profile">
+	<ion-content class="padding">
+		<loading-box>
+			<div class="card padding cover userinfo">
+				<div class="picture">
+					<img ng-src="{{ user.avatar }}" alt="User Picture" />
+					<h3>{{ user.name }}</h3>
+					<p>{{ user.title }}</p>
+				</div>
+			</div>
+
+			<div class="list">
+				<div class="item item-divider">Details</div>
+				<ion-item class="item-icon-left item-text-wrap">
+					<i class="icon ion-location"></i>
+					{{ user.address }}, {{ user.city }}, {{ user.province }}, {{ user.country }}
+				</ion-item>
+				<ion-item class="item-icon-left">
+					<i class="icon ion-android-call"></i>
+					{{ user.phone }}
+				</ion-item>
+				<ion-item class="item-icon-left">
+					<i class="icon ion-email"></i>
+					{{ user.email }}
+				</ion-item>
+			</div class="list">
+
+			<button class="button button-balanced icon icon-left ion-edit" ui-sref="tabs.editProfile" ng-if="canEdit">Edit Profile</button>
+		</loading-box>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,25 @@
+<ion-view title="Edit Package">
+	<ion-content class="padding">
+		<loading-box>
+			<form class="list" name="packageForm">
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Package Name</span>
+					<input type="text" placeholder="Package Name" ng-model="package.package_name" required>
+				</label>
+
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Price per Unit</span>
+					<input type="number" placeholder="Price per Unit" ng-model="package.price" required>
+				</label>
+
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Processing Time (hours)</span>
+					<input type="number" placeholder="Processing Time (hours)" ng-model="package.processing_time" required>
+				</label>
+			</form>
+
+			<button class="button button-balanced icon icon-left ion-checkmark-round" ng-disabled="!packageForm.$valid" ng-click="save()">Save Package</button>
+			<button class="button button-stable" ui-sref="tabs.packages">Back to Packages List</button>
+		</loading-box>
+	</ion-content>
+</ion-view>

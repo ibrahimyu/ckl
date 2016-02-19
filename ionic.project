@@ -1,0 +1,11 @@
+{
+  "name": "mobile-laundry",
+  "app_id": "",
+  "gulpStartupTasks": [
+    "default"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}

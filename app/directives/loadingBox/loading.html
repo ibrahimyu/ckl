@@ -1,0 +1,9 @@
+<div>
+	<div class="loading" ng-show="!loadingComplete">
+		<p>{{ message }}</p>
+		<img class="small" ng-src="img/ripple.svg" />
+	</div>
+	<div ng-show="loadingComplete">
+		<div ng-transclude></div>
+	</div>
+</div>

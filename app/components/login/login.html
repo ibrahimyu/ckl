@@ -1,0 +1,40 @@
+<ion-view>
+	<ion-content>
+		<div id="login">
+			<div class="inner padding">
+
+				<img class="logo" src="img/cekucek-logo-laundry.png"/>
+
+				<div class="alert-box" ng-if="loginError">
+					Username or password is incorrect. Please try again.
+				</div>
+
+				<div class="stayBot">
+					<loading-box message="Logging in..." ng-if="loggingIn"></loading-box>
+
+					<div ng-if="!loggingIn">
+						<form id="loginForm" class="list" name="loginForm">
+
+							<label class="item item-input item-floating-label">
+								<span class="input-label">Email</span>
+								<input type="email" placeholder="Email" ng-model="user.email" required>
+							</label>
+
+							<label class="item item-input item-floating-label">
+								<span class="input-label">Password</span>
+								<input type="password" placeholder="Password" ng-model="user.password" required>
+							</label>
+						</form>
+
+						<button class="button button-energized button-block" ng-click="doLogin()" ng-disabled="!loginForm.$valid">Login</button>
+					</div>
+
+					<div class="text-center">
+						<p style="margin-top: 30px;">Don't have an account?</p>
+						<button class="button button-energized button-80" ui-sref="registerUser">Sign Up</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,33 @@
+<ion-view title="Edit Profile">
+	<ion-content class="padding has-header">
+		<form class="list" name="profileForm">
+			<label class="item item-input item-floating-label">
+				<span class="input-label">Name</span>
+				<input type="text" placeholder="Name" ng-model="user.name" required>
+			</label>
+			<label class="item item-input item-floating-label">
+				<span class="input-label">Address</span>
+				<input type="text" placeholder="Address" ng-model="user.address" required>
+			</label>
+			<label class="item item-input item-floating-label">
+				<span class="input-label">City</span>
+				<input type="text" placeholder="City" ng-model="user.city" required>
+			</label>
+			<label class="item item-input item-floating-label">
+				<span class="input-label">Province</span>
+				<input type="text" placeholder="Province" ng-model="user.province" required>
+			</label>
+			<label class="item item-input item-floating-label">
+				<span class="input-label">Country</span>
+				<input type="text" placeholder="Country" ng-model="user.country" required>
+			</label>
+			<label class="item item-input item-floating-label">
+				<span class="input-label">Phone Number</span>
+				<input type="text" placeholder="Phone Number" ng-model="user.phone" required>
+			</label>
+		</form>
+
+		<button class="button button-balanced icon icon-left ion-checkmark" ng-click="updateProfile()" ng-disabled="!profileForm.$valid">Save Changes</button>
+		<button class="button button-stable" ui-sref="tabs.myProfile">Cancel</button>
+	</ion-content>
+</ion-view>

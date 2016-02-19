@@ -1,0 +1,5 @@
+<div class="paginator">
+	<button class="button icon ion-arrow-left-b button-back" ng-disabled="!source.prev_page_url" ng-click="prevPage()"></button>
+	<span class="indicator">Page {{ source.current_page }} of {{ source.last_page }}</span>
+	<button class="button icon ion-arrow-right-b button-next" ng-disabled="!source.next_page_url" ng-click="nextPage()"></button>
+</div>

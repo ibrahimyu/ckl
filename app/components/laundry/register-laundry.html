@@ -1,0 +1,39 @@
+<ion-view title="Register Laundry">
+	<ion-content>
+        <div class="padding">
+			<form class="list" name="registerLaundryForm">
+				<div class="item item-divider">Laundry Information</div>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Laundry Name</span>
+					<input type="text" placeholder="Laundry Name" ng-model="laundry.laundry_name" required>
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Slogan (optional)</span>
+					<input type="text" placeholder="Slogan (optional)" ng-model="laundry.slogan" required>
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Address</span>
+					<input type="text" placeholder="Address" ng-model="laundry.address" required>
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">City</span>
+					<input type="text" placeholder="City" ng-model="laundry.city" required>
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Province</span>
+					<input type="text" placeholder="Province" ng-model="laundry.province" required>
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Country</span>
+					<input type="text" placeholder="Country" ng-model="laundry.country" required>
+				</label>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Phone Number</span>
+					<input type="text" placeholder="Phone Number" ng-model="laundry.phone" required>
+				</label>
+			</form>
+
+			<button class="button button-balanced icon icon-left ion-checkmark" ng-click="doRegister()">Register Laundry</button>
+		</div>
+	</ion-content>
+</ion-view>

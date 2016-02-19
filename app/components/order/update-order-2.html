@@ -1,0 +1,41 @@
+<ion-view title="Update Order">
+	<ion-content class="padding">
+		<div class="list">
+			<label class="item item-select">
+				<span class="input-label">Package</span>
+				<select required
+					placeholder="Select Package"
+					ng-model="order.package"
+					ng-options="package as package.package_name for package in packages track by package.id"
+					ng-change="calculatePrice()"></select>
+			</label>
+			<div class="item item-input">
+				<span class="input-label">Weight</span>
+				<stepper ng-model="order.weight" ng-change="calculatePrice()"></stepper>
+			</div>
+
+			<label class="item item-input">
+				<span class="input-label">Amount Due</span>
+				<input class="text-right" ng-model="order.amount_due" type="number"/>
+			</label>
+			<label class="item item-input">
+				<span class="input-label">Amount Paid</span>
+				<input class="text-right" ng-model="order.amount_paid" type="number"/>
+			</label>
+			<label class="item item-input">
+				<span class="input-label">Expected Delivery Date</span>
+				<input class="text-right" ng-model="order.delivery_date" type="date"/>
+			</label>
+			<label class="item item-select">
+				<span class="input-label">Processed by</span>
+				<select required placeholder="Select user" ng-model="order.processor" ng-options="user as user.name for user in users track by user.id"></select>
+			</label>
+			<label class="item item-select">
+				<span class="input-label">Delivery by</span>
+				<select required placeholder="Select user" ng-model="order.deliveryman" ng-options="user as user.name for user in users track by user.id"></select>
+			</label>
+		</div>
+
+		<button class="button button-balanced button-block" ng-click="doUpdate()">Save Changes</button>
+	</ion-content>
+</ion-view>

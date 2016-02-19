@@ -1,0 +1,12 @@
+<ion-view title="Manage Users">
+	<ion-content class="padding">
+		<button class="button button-balanced icon icon-left ion-plus mbot">Add User</button>
+		<div class="list">
+			<a class="item item-avatar" ui-sref="tabs.viewProfile({ id: user.id })" ng-repeat="user in users.data">
+				<img ng-src="{{ user.avatar }}"/>
+				<h2>{{ user.name }}</h2>
+				<p>{{ user.laundry.laundry_name }}</p>
+			</a>
+		</div>
+	</ion-content>
+</ion-view>

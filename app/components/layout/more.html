@@ -1,0 +1,22 @@
+<ion-view view-title="More">
+	<ion-content class="padding">
+        <ion-list>
+			<ion-item class="item-divider">Account Settings</ion-item>
+            <ion-item ui-sref="tabs.myProfile">Profile</ion-item>
+            <ion-item ui-sref="tabs.account">Change Password</ion-item>
+			<ion-item ng-click="doLogout()">Logout</ion-item>
+
+			<ion-item class="item-divider">Laundry Settings</ion-item>
+			<ion-item ui-sref="tabs.myLaundry">Laundry Information</ion-item>
+			<ion-item ui-sref="tabs.manageUsers">Manage Users</ion-item>
+
+			<ion-item class="item-divider">Pricing</ion-item>
+			<ion-item ui-sref="tabs.packages">Packages</ion-item>
+			<ion-item ui-sref="tabs.items">Items</ion-item>
+
+			<ion-item class="item-divider">Support</ion-item>
+            <ion-item ui-sref="tabs.about">About Cekucek</ion-item>
+            <ion-item ui-sref="tabs.contact">Contact Us</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

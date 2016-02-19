@@ -1,0 +1,46 @@
+<ion-view title="Home">
+	<ion-content class="has-header">
+		<ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
+		<loading-box message="Retrieving orders...">
+			<div class="padding">
+				<div class="card list">
+					<div class="item item-avatar">
+						<img ng-src="{{ dash.user.avatar }}"/>
+						<h2>{{ dash.user.name }}</h2>
+						<small>{{ dash.user.laundry.laundry_name }}</small>
+					</div>
+
+					<div class="item item-divider">Orders</div>
+
+					<div class="item">
+						New orders <span class="item-note">{{ dash.new_orders }}</span>
+					</div>
+					<div class="item">
+						Active orders <span class="item-note">{{ dash.active_orders }}</span>
+					</div>
+					<div class="item">
+						Waiting delivery <span class="item-note">{{ dash.waiting_delivery }}</span>
+					</div>
+
+					<div class="item item-divider">Income</div>
+
+					<div class="item">
+						Today <span class="item-note">{{ dash.today_income | currency: 'Rp '}}</span>
+					</div>
+
+					<div class="item">
+						This Week <span class="item-note">{{ dash.week_income | currency: 'Rp '}}</span>
+					</div>
+
+					<div class="item">
+						This Month <span class="item-note">{{ dash.month_income | currency: 'Rp '}}</span>
+					</div>
+
+					<div class="item">
+						This Year <span class="item-note">{{ dash.year_income | currency: 'Rp '}}</span>
+					</div>
+				</div>
+			</div>
+		</loading-box>
+	</ion-content>
+</ion-view>

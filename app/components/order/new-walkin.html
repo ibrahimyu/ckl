@@ -1,0 +1,78 @@
+<ion-view title="Add Walk-in">
+	<ion-content class="has-header padding">
+		<form class="list" name="orderForm">
+			<label class="item item-select">
+				<span class="input-label">Customer</span>
+				<select ng-model="order.customer_type" required>
+					<option value="new">New Customer</option>
+					<option value="existing">Existing Customer</option>
+				</select>
+			</label>
+
+			<label class="item item-input" ng-if="order.customer_type == 'new'">
+				<span class="input-label">Customer Name</span>
+				<input type="text" ng-model="customer.name" placeholder="Enter customer name">
+			</label>
+
+			<label class="item item-input" ng-if="order.customer_type == 'existing'">
+				<span class="input-label">Customer Email</span>
+				<input type="text" ng-model="customer.email" placeholder="Enter customer e-mail">
+			</label>
+
+			<label class="item item-select">
+				<span class="input-label">Type</span>
+				<select required ng-model="order.type" required>
+					<option value="weight">Per weight</option>
+					<option value="piece">Per item</option>
+				</select>
+			</label>
+
+			<label class="item item-select" required>
+				<span class="input-label">Package</span>
+				<select required placeholder="Select Package" ng-model="order.package" ng-options="package as package.package_name for package in packages track by package.id"></select>
+			</label>
+
+			<div class="item item-text-wrap item-icon-left" ng-if="order.package">
+				<i class="icon ion-leaf"></i>
+				{{ order.package.package_name }} ({{ order.package.price | currency: 'Rp ' }}/kg, {{ order.package.processing_time }} hours)
+			</div>
+
+			<label class="item item-select">
+				<span class="input-label">Delivery To</span>
+				<select required ng-model="order.delivery_to">
+					<option value="home">Home</option>
+					<option value="current">Take from here</option>
+					<option value="custom">Custom Address...</option>
+				</select>
+			</label>
+
+			<div class="item item-text-wrap item-icon-left" ng-if="order.delivery_to == 'home'">
+				<i class="icon ion-location"></i> {{ user.address }}
+			</div>
+
+			<div class="item item-text-wrap item-icon-left" ng-if="order.delivery_to == 'current' && delivery_address">
+				<i class="icon ion-location"></i> {{ delivery_address }}
+			</div>
+
+			<div class="item item-text-wrap item-avatar" ng-if="order.delivery_to == 'current' && !delivery_address">
+				<img src="img/ripple.svg"/>
+				Getting current location...<br>
+				<button class="button button-stable button-small" ng-click="refreshLocation()">Refresh</button>
+			</div>
+
+			<div class="item" ng-if="order.delivery_to == 'custom'">
+				<textarea ng-model="order.custom_address" placeholder="Enter Custom Address..." style="min-height: 200px; width: 100%"></textarea>
+			</div>
+
+		</form>
+		<div ng-if="ordering" class="text-center">
+			<img src="img/ripple.svg" style="height: 50px; width: 50px"/>
+		</div>
+		<div class="button-group text-center" ng-if="!ordering">
+			<button class="button button-balanced button-block" ng-click="submitOrder()" ng-disabled="!orderForm.$valid">
+				<i class="icon ion-checkmark-round"></i>
+				Submit Order
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,9 @@
+<button class="dec button button-stable button-small" ng-click="decrement()" ng-disabled="!canDecrement()">
+	<i class="icon ion-minus"></i>
+</button>
+
+<label class="num {{ value ? 'bold' : '' }}">{{ value }}</label>
+
+<button class="inc button button-stable button-small" ng-click="increment()" ng-disabled="!canIncrement()">
+	<i class="icon ion-plus"></i>
+</button>
