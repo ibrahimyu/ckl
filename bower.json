@@ -1,13 +1,16 @@
 {
   "name": "HelloIonic",
   "private": "true",
-  "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.2.4"
-  },
   "dependencies": {
+    "ionic": "driftyco/ionic-bower#1.2.4",
     "satellizer": "~0.13.4",
     "font-awesome": "~4.5.0",
     "ngCordova": "~0.1.24-alpha",
-    "moment": "~2.11.2"
+    "moment": "~2.11.2",
+    "angular-translate": "^2.9.1",
+    "angular-translate-loader-static-files": "^2.9.1",
+    "angular-translate-handler-log": "^2.9.1",
+    "angular-dynamic-locale": "^0.1.30",
+    "angular-i18n": "^1.5.0"
   }
 }

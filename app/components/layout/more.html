@@ -4,6 +4,7 @@
 			<ion-item class="item-divider">Account Settings</ion-item>
             <ion-item ui-sref="tabs.myProfile">Profile</ion-item>
             <ion-item ui-sref="tabs.account">Change Password</ion-item>
+			<ion-item ng-click="setLanguage()">{{ 'language' | translate }}</ion-item>
 			<ion-item ng-click="doLogout()">Logout</ion-item>
 
 			<ion-item class="item-divider">Laundry Settings</ion-item>

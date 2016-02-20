@@ -2,32 +2,32 @@
 	<ion-content class="padding has-header">
 		<form class="list" name="profileForm">
 			<label class="item item-input item-floating-label">
-				<span class="input-label">Name</span>
+				<span class="input-label">{{ 'name' | translate }}</span>
 				<input type="text" placeholder="Name" ng-model="user.name" required>
 			</label>
 			<label class="item item-input item-floating-label">
-				<span class="input-label">Address</span>
+				<span class="input-label">{{ 'address' | translate }}</span>
 				<input type="text" placeholder="Address" ng-model="user.address" required>
 			</label>
 			<label class="item item-input item-floating-label">
-				<span class="input-label">City</span>
+				<span class="input-label">{{ 'city' | translate }}</span>
 				<input type="text" placeholder="City" ng-model="user.city" required>
 			</label>
 			<label class="item item-input item-floating-label">
-				<span class="input-label">Province</span>
+				<span class="input-label">{{ 'province' | translate }}</span>
 				<input type="text" placeholder="Province" ng-model="user.province" required>
 			</label>
 			<label class="item item-input item-floating-label">
-				<span class="input-label">Country</span>
+				<span class="input-label">{{ 'country' | translate }}</span>
 				<input type="text" placeholder="Country" ng-model="user.country" required>
 			</label>
 			<label class="item item-input item-floating-label">
-				<span class="input-label">Phone Number</span>
+				<span class="input-label">{{ 'phone_number' | translate }}</span>
 				<input type="text" placeholder="Phone Number" ng-model="user.phone" required>
 			</label>
 		</form>
 
-		<button class="button button-balanced icon icon-left ion-checkmark" ng-click="updateProfile()" ng-disabled="!profileForm.$valid">Save Changes</button>
-		<button class="button button-stable" ui-sref="tabs.myProfile">Cancel</button>
+		<button class="button button-balanced icon icon-left ion-checkmark" ng-click="updateProfile()" ng-disabled="!profileForm.$valid">{{ 'save_change' | translate }}</button>
+		<button class="button button-stable" ui-sref="tabs.myProfile">{{ 'cancel' | translate }}</button>
 	</ion-content>
 </ion-view>

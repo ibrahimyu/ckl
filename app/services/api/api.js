@@ -1,14 +1,12 @@
 angular.module('app.services')
 
 .factory('$api', function($http, $q, $rootScope, $cordovaPush, $localstorage, $geolocation) {
-	var basePath = ap;
-
 	function makeRequest(verb, uri, data) {
 		var defer = $q.defer();
 		verb = verb.toLowerCase();
 
 		$http({
-				url: basePath + uri,
+				url: ap + uri,
 				method: verb,
 				data: data
 			})
@@ -18,15 +16,8 @@ angular.module('app.services')
 					defer.resolve(response.data);
 				},
 				function(e) {
-					if (verb == 'get' && $localstorage.get(uri, false))
-					{
-						var data = $localstorage.getObject(uri);
-						defer.resolve(data);
-					}
-					else
-					{
-						defer.reject(e);
-					}
+					var data = $localstorage.getObject(uri);
+					defer.resolve(data);
 				})
 			.finally(function() {
 				$rootScope.$broadcast('loadingComplete');
@@ -40,29 +31,54 @@ angular.module('app.services')
 			'badge': 'true',
 			'sound': 'true',
 			'alert': 'true',
-			'senderID': '574964286293',
-		}).then(function(result) {
-			console.log(result);
-		}, function(error) {
-
-		});
+			'senderID': appId,
+		}).then(function(result) {}, function(error) {});
 	}
 
-	function getUserPosition() {
+	function getPosition(progress) {
 		var defer = $q.defer();
-		$geolocation.getAccuratePosition(function(position) {
-			$scope.currentLocation = position.coords;
-			$api.post('/customer/update-location', position.coords)
+
+		$geolocation.getAccuratePosition(
+			function(position) {
+				makeRequest('post', '/customer/update-location', {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude,
+					accuracy: position.coords.accuracy
+				})
 				.then(function(user) {
-					defer.resolve(user);
+					defer.resolve(position);
 				});
-		}, function(reason) {
-			defer.reject(reason);
-		}, function(position) {
-			$scope.currentLocation = position.coords;
-		}, {
-			desiredAccuracy: 100,
-			maxWait: 30000
+			},
+			function(reason) {
+				defer.reject(reason);
+			},
+			function(position) {
+				if (progress) progress(position);
+			}
+		);
+
+		return defer.promise;
+	}
+
+	function ensurePosition() {
+		makeRequest('get', '/me').then(function(user) {
+			if (!user.accuracy)
+			{
+				getPosition(function(position) {
+					makeRequest('post', '/customer/update-location', {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude,
+						accuracy: position.coords.accuracy
+					});
+				})
+				.then(function(position) {
+					makeRequest('post', '/customer/update-location', {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude,
+						accuracy: position.coords.accuracy
+					});
+				});
+			}
 		});
 	}
 
@@ -83,6 +99,7 @@ angular.module('app.services')
 			return makeRequest('delete', uri);
 		},
 		registerPush: registerPush,
-		getUserPosition: getUserPosition
+		getPosition: getPosition,
+		ensurePosition: ensurePosition
 	};
 });

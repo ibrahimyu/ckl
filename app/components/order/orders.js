@@ -69,15 +69,6 @@ angular.module('app.controllers')
 			$scope.itemTypes = data;
 		});
 
-	$scope.incQty = function(item) {
-		item.qty++;
-	};
-
-	$scope.decQty = function(item) {
-		if (item.qty > 0)
-			item.qty--;
-	};
-
 	$scope.doUpdate = function() {
 		$scope.order.itemTypes = $scope.itemTypes;
 		$api.put('/laundry/order/' + $stateParams.id, $scope.order)

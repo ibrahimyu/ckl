@@ -1,20 +1,20 @@
 <ion-view title="My Account">
 	<ion-content class="padding">
 		<form name="changePasswordForm" class="form list">
-			<div class="item item-divider">Change Password</div>
+			<div class="item item-divider">{{ 'change_password' | translate}}</div>
 
 			<label class="item item-input item-floating-label">
-				<span class="input-label">New Password</span>
-				<input type="password" class="item" ng-model="newpassword" placeholder="New Password" required/>
+				<span class="input-label">{{ 'new_password' | translate}}</span>
+				<input type="password" class="item" ng-model="newpassword" placeholder="{{ 'new_password' | translate }}" required/>
 			</label>
 
 			<label class="item item-input item-floating-label">
-				<span class="input-label">Retype New Password</span>
-				<input type="password" class="item" ng-model="verifypassword" placeholder="Retype New Password" required/>
+				<span class="input-label">{{ 'retype_new_password' | translate }}</span>
+				<input type="password" class="item" ng-model="verifypassword" placeholder="{{ 'retype_new_password' | translate }}" required/>
 			</label>
 		</form>
 
-		<button class="button button-balanced" ng-click="changePassword()" ng-disabled="!changePasswordForm.$valid">Change Password</button>
+		<button class="button button-balanced" ng-click="changePassword()" ng-disabled="!changePasswordForm.$valid">{{ 'change_password' | translate }}</button>
 
 	</ion-content>
 </ion-view>

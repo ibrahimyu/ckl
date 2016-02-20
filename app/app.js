@@ -5,7 +5,7 @@ if (localStorage.getItem('debug') == 'true') {
 	ap = 'http://localhost:8000';
 }
 
-angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.auth', 'app.services', 'satellizer', 'ngCordova', 'templates'])
+angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.auth', 'app.services', 'satellizer', 'ngCordova', 'templates', 'pascalprecht.translate'])
 
 .run(function($ionicPlatform, $ionicHistory, $ionicPopup, $auth, $state, $http, $rootScope, $api) {
 	$ionicPlatform.ready(function() {
@@ -23,6 +23,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.auth',
 		}
 		else {
 			$api.registerPush();
+			$api.ensurePosition();
 		}
 
 		$rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {

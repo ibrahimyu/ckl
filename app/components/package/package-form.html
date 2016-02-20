@@ -3,23 +3,23 @@
 		<loading-box>
 			<form class="list" name="packageForm">
 				<label class="item item-input item-floating-label">
-					<span class="input-label">Package Name</span>
+					<span class="input-label">{{ 'package_name' | translate }}</span>
 					<input type="text" placeholder="Package Name" ng-model="package.package_name" required>
 				</label>
 
 				<label class="item item-input item-floating-label">
-					<span class="input-label">Price per Unit</span>
+					<span class="input-label">{{ 'price_per_unit' | translate }}</span>
 					<input type="number" placeholder="Price per Unit" ng-model="package.price" required>
 				</label>
 
 				<label class="item item-input item-floating-label">
-					<span class="input-label">Processing Time (hours)</span>
+					<span class="input-label">{{ 'processing_time_(hours)' | translate }}</span>
 					<input type="number" placeholder="Processing Time (hours)" ng-model="package.processing_time" required>
 				</label>
 			</form>
 
-			<button class="button button-balanced icon icon-left ion-checkmark-round" ng-disabled="!packageForm.$valid" ng-click="save()">Save Package</button>
-			<button class="button button-stable" ui-sref="tabs.packages">Back to Packages List</button>
+			<button class="button button-balanced icon icon-left ion-checkmark-round" ng-disabled="!packageForm.$valid" ng-click="save()">{{ 'save_package' | translate }}</button>
+			<button class="button button-stable" ui-sref="tabs.packages">{{ 'back_to_package_list' | translate }}</button>
 		</loading-box>
 	</ion-content>
 </ion-view>
