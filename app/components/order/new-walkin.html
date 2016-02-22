@@ -1,48 +1,48 @@
-<ion-view title="Add Walk-in">
+<ion-view title="{{ 'new_walk_in' | translate }}">
 	<ion-content class="has-header padding">
 		<form class="list" name="orderForm">
 			<label class="item item-select">
-				<span class="input-label">Customer</span>
+				<span class="input-label">{{ 'customer' | translate }}</span>
 				<select ng-model="order.customer_type" required>
-					<option value="new">New Customer</option>
-					<option value="existing">Existing Customer</option>
+					<option value="new">{{ 'new_customer' | translate }}</option>
+					<option value="existing">{{ 'existing_customer' | translate }}</option>
 				</select>
 			</label>
 
 			<label class="item item-input" ng-if="order.customer_type == 'new'">
-				<span class="input-label">Customer Name</span>
+				<span class="input-label">{{ 'name' | translate }}</span>
 				<input type="text" ng-model="customer.name" placeholder="Enter customer name">
 			</label>
 
 			<label class="item item-input" ng-if="order.customer_type == 'existing'">
-				<span class="input-label">Customer Email</span>
+				<span class="input-label">{{ 'email' | translate }}</span>
 				<input type="text" ng-model="customer.email" placeholder="Enter customer e-mail">
 			</label>
 
 			<label class="item item-select">
-				<span class="input-label">Type</span>
+				<span class="input-label">{{ 'type' | translate }}</span>
 				<select required ng-model="order.type" required>
-					<option value="weight">Per weight</option>
-					<option value="piece">Per item</option>
+					<option value="weight">{{ 'per_weight' | translate }}</option>
+					<option value="piece">{{ 'per_item' | translate }}</option>
 				</select>
 			</label>
 
 			<label class="item item-select" required>
-				<span class="input-label">Package</span>
-				<select required placeholder="Select Package" ng-model="order.package" ng-options="package as package.package_name for package in packages track by package.id"></select>
+				<span class="input-label">{{ 'package' | translate }}</span>
+				<select required placeholder="{{ 'select_package' | translate }}" ng-model="order.package" ng-options="package as package.package_name for package in packages track by package.id"></select>
 			</label>
 
 			<div class="item item-text-wrap item-icon-left" ng-if="order.package">
 				<i class="icon ion-leaf"></i>
-				{{ order.package.package_name }} ({{ order.package.price | currency: 'Rp ' }}/kg, {{ order.package.processing_time }} hours)
+				{{ order.package.package_name }} ({{ order.package.price | currency: 'Rp ' | translate }}/kg, {{ order.package.processing_time }} hours)
 			</div>
 
 			<label class="item item-select">
-				<span class="input-label">Delivery To</span>
+				<span class="input-label">{{ 'delivery_to' | translate }}</span>
 				<select required ng-model="order.delivery_to">
-					<option value="home">Home</option>
-					<option value="current">Take from here</option>
-					<option value="custom">Custom Address...</option>
+					<option value="home">{{ 'home' | translate }}</option>
+					<option value="current">{{ 'take_from_here' | translate }}</option>
+					<option value="custom">{{ 'custom_address' | translate }}...</option>
 				</select>
 			</label>
 
@@ -56,8 +56,8 @@
 
 			<div class="item item-text-wrap item-avatar" ng-if="order.delivery_to == 'current' && !delivery_address">
 				<img src="img/ripple.svg"/>
-				Getting current location...<br>
-				<button class="button button-stable button-small" ng-click="refreshLocation()">Refresh</button>
+				{{ 'getting_current_location' | translate }}<br>
+				<button class="button button-stable button-small" ng-click="refreshLocation()">{{ 'refresh' | translate }}</button>
 			</div>
 
 			<div class="item" ng-if="order.delivery_to == 'custom'">
@@ -71,7 +71,7 @@
 		<div class="button-group text-center" ng-if="!ordering">
 			<button class="button button-balanced button-block" ng-click="submitOrder()" ng-disabled="!orderForm.$valid">
 				<i class="icon ion-checkmark-round"></i>
-				Submit Order
+				{{ 'submit_order' | translate }}
 			</button>
 		</div>
 	</ion-content>

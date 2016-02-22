@@ -1,6 +1,6 @@
-<ion-view title="Manage Users">
+<ion-view title="{{ 'manage_users' | translate }}">
 	<ion-content class="padding">
-		<button class="button button-balanced icon icon-left ion-plus mbot">Add User</button>
+		<button class="button button-balanced icon icon-left ion-plus mbot">{{ 'add_user' | translate }}</button>
 		<div class="list">
 			<a class="item item-avatar" ui-sref="tabs.viewProfile({ id: user.id })" ng-repeat="user in users.data">
 				<img ng-src="{{ user.avatar }}"/>

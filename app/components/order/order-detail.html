@@ -1,50 +1,52 @@
-<ion-view title="View Order">
+<ion-view title="{{ 'view_order' | translate }}">
 	<ion-nav-buttons side="right">
-		<button class="button icon-left ion-edit" ui-sref="tabs.updateOrder1({ id: order.id })">Edit</button>
+		<button class="button icon-left ion-edit" ui-sref="tabs.updateOrder1({ id: order.id })">
+			{{ 'edit' | translate }}
+		</button>
 	</ion-nav-buttons>
 	<ion-content class="has-header padding">
 		<loading-box>
 			<div class="list">
-				<div class="item item-divider">Invoice #{{ order.id }}</div>
+				<div class="item item-divider">{{ 'invoice' | translate }} #{{ order.id }}</div>
 				<a class="item item-avatar item-text-wrap" ui-sref="tabs.viewProfile({ id: order.customer.id })">
 					<img ng-src="{{ order.customer.avatar }}"/>
 					<h2>{{ order.customer.name }}</h2>
 					<p>{{ order.customer.address }}</p>
 				</a>
 				<div class="item">
-					Package
+					{{ 'package' | translate }}
 					<span class="item-note">{{ order.package.package_name }}</span>
 				</div>
 				<div class="item">
-					Expected Delivery Date
-					<span class="item-note">{{ order.delivery_date ? order.delivery_date : 'Waiting confirmation' }}</span>
+					{{ 'expected_delivery_date' | translate }}
+					<span class="item-note">{{ order.delivery_date ? order.delivery_date : 'Waiting confirmation'}}</span>
 				</div>
 				<div class="item">
-					Processing by
+					{{ 'processing_by' | translate }}
 					<span class="item-note">{{ order.processor.name ? order.processor.name : 'Waiting confirmation' }}</span>
 				</div>
 				<div class="item">
-					Delivery by
+					{{ 'delivery_by' | translate }}
 					<span class="item-note">{{ order.deliveryman.name ? order.deliveryman.name : 'Waiting confirmation' }}</span>
 				</div>
 				<div class="item">
-					Status
+					{{ 'status' | translate }}
 					<span class="item-note">{{ order.status }}</span>
 				</div>
 				<div class="item">
-					Weight
+					{{ 'weight' | translate }}
 					<span class="item-note">{{ order.weight }} kg</span>
 				</div>
 				<div class="item">
-					Amount
+					{{ 'amount' | translate }}
 					<span class="item-note">{{ order.amount_due | currency: 'Rp ' }}</span>
 				</div>
 
 				<div class="item">
-					<button class="button button-balanced button-block" ng-click="changeStatus()">Change Status...</button>
+					<button class="button button-balanced button-block" ng-click="changeStatus()">{{ 'change_status' | translate }}...</button>
 				</div>
 
-				<div class="item item-divider">Items</div>
+				<div class="item item-divider">{{ 'items' | translate }}</div>
 				<div class="item" ng-repeat="item in order.details">
 					{{ item.item_type.type }}
 					<span class="item-note">{{ item.qty }} pcs</span>

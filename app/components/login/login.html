@@ -6,7 +6,7 @@
 				<img class="logo" src="img/cekucek-logo-laundry.png"/>
 
 				<div class="alert-box" ng-if="loginError">
-					Username or password is incorrect. Please try again.
+					{{ 'invalid_credentials' | translate }}
 				</div>
 
 				<div class="stayBot">
@@ -16,22 +16,22 @@
 						<form id="loginForm" class="list" name="loginForm">
 
 							<label class="item item-input item-floating-label">
-								<span class="input-label">Email</span>
+								<span class="input-label">{{ 'email' | translate }}</span>
 								<input type="email" placeholder="Email" ng-model="user.email" required>
 							</label>
 
 							<label class="item item-input item-floating-label">
-								<span class="input-label">Password</span>
+								<span class="input-label">{{ 'password' | translate }}</span>
 								<input type="password" placeholder="Password" ng-model="user.password" required>
 							</label>
 						</form>
 
-						<button class="button button-energized button-block" ng-click="doLogin()" ng-disabled="!loginForm.$valid">Login</button>
+						<button class="button button-energized button-block" ng-click="doLogin()" ng-disabled="!loginForm.$valid">{{ 'login' | translate }}</button>
 					</div>
 
 					<div class="text-center">
-						<p style="margin-top: 30px;">Don't have an account?</p>
-						<button class="button button-energized button-80" ui-sref="registerUser">Sign Up</button>
+						<p style="margin-top: 30px;">{{ 'dont_have_an_account?' | translate }}</p>
+						<button class="button button-energized button-80" ui-sref="registerUser">{{ 'sign_up' | translate }}</button>
 					</div>
 				</div>
 			</div>

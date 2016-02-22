@@ -1,20 +1,20 @@
-<ion-view title="Edit Package">
+<ion-view title="{{ 'edit_package' | translate }}">
 	<ion-content class="padding">
 		<loading-box>
 			<form class="list" name="packageForm">
 				<label class="item item-input item-floating-label">
 					<span class="input-label">{{ 'package_name' | translate }}</span>
-					<input type="text" placeholder="Package Name" ng-model="package.package_name" required>
+					<input type="text" placeholder="{{ 'package_name' | translate }}" ng-model="package.package_name" required>
 				</label>
 
 				<label class="item item-input item-floating-label">
 					<span class="input-label">{{ 'price_per_unit' | translate }}</span>
-					<input type="number" placeholder="Price per Unit" ng-model="package.price" required>
+					<input type="number" placeholder="{{ 'price_per_unit' | translate }}" ng-model="package.price" required>
 				</label>
 
 				<label class="item item-input item-floating-label">
 					<span class="input-label">{{ 'processing_time_(hours)' | translate }}</span>
-					<input type="number" placeholder="Processing Time (hours)" ng-model="package.processing_time" required>
+					<input type="number" placeholder="{{ 'processing_time_(hours)' | translate }}" ng-model="package.processing_time" required>
 				</label>
 			</form>
 

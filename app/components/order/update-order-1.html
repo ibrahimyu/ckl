@@ -1,6 +1,6 @@
-<ion-view title="Specify Items">
+<ion-view title="{{ 'specify_items' | translate }}">
 	<ion-nav-buttons side="right">
-		<button class="button" ng-click="doUpdate()">Next ></button>
+		<button class="button" ng-click="doUpdate()">{{ 'next' | translate }} ></button>
 	</ion-nav-buttons>
 	<ion-content class="padding">
 		<div class="list">
@@ -9,6 +9,6 @@
 				<stepper ng-model="item.qty"></stepper>
 			</div>
 		</div>
-		<button class="button button-balanced button-block" ng-click="doUpdate()">Confirm Order</button>
+		<button class="button button-balanced button-block" ng-click="doUpdate()">{{ 'save_changes' | translate }}</button>
 	</ion-content>
 </ion-view>

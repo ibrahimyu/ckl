@@ -1,24 +1,24 @@
-<ion-view title="Orders">
+<ion-view title="{{ 'orders' | translate }}">
 	<ion-nav-buttons side="right">
-		<button class="button icon-left ion-plus" ui-sref="tabs.newWalkin">New Walk-in</button>
+		<button class="button icon-left ion-plus" ui-sref="tabs.newWalkin">{{ 'new_walk_in' | translate }}</button>
 	</ion-nav-buttons>
 	<ion-content class="has-header">
 		<ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
 		<div class="padding" loading-box>
 
 			<div class="list">
-				<div class="item item-divider">New Orders</div>
+				<div class="item item-divider">{{ 'new_orders' | translate }}</div>
 				<div class="item order-item" ng-repeat="order in orders.new_orders" ui-sref="tabs.updateOrder1({ id: order.id })">
-					<h2>Order #{{ order.id }}</h2>
+					<h2>{{ 'order' | translate }} #{{ order.id }}</h2>
 					<small>{{ order.customer.name }}</small><br>
 					<small>{{ order.created_at | dateToISO | date: 'fullDate' }}</small>
 				</div>
 
 				<div class="item item-text-wrap" ng-if="!orders.new_orders.length">
-					No new orders.
+					{{ 'no_new_orders' | translate }}
 				</div>
 
-				<div class="item item-divider">Active Orders</div>
+				<div class="item item-divider">{{ 'active_orders' | translate }}</div>
 				<div class="item order-item" ng-repeat="order in orders.active_orders" ui-sref="tabs.orderDetail({ id: order.id })">
 					<div class="item-right-pane pull-right">
 						<span>{{ order.amount_due | currency: 'Rp ' }}</span>
@@ -27,15 +27,17 @@
 							{{ order.status }}
 						</span>
 					</div>
-					<h2>Order #{{ order.id }}</h2>
+					<h2>{{ 'order' | translate }} #{{ order.id }}</h2>
 					<small>{{ order.customer.name }}</small><br>
 					<small>{{ order.created_at | dateToISO | date: 'fullDate' }}</small>
 				</div>
+
+				<div class="item item-text-wrap" ng-if="!orders.active_orders.length">
+					{{ 'no_orders' | translate }}
+				</div>
 			</div>
 
-			<div class="item item-text-wrap" ng-if="!orders.active_orders.length">
-				No orders.
-			</div>
+
 		</div>
 	</ion-content>
 </ion-view>

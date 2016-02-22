@@ -1,23 +1,23 @@
-<ion-view view-title="More">
+<ion-view view-title="{{ 'more' | translate }}">
 	<ion-content class="padding">
         <ion-list>
-			<ion-item class="item-divider">Account Settings</ion-item>
-            <ion-item ui-sref="tabs.myProfile">Profile</ion-item>
-            <ion-item ui-sref="tabs.account">Change Password</ion-item>
+			<ion-item class="item-divider">{{ 'account_settings' | translate }}</ion-item>
+            <ion-item ui-sref="tabs.myProfile">{{ 'profile' | translate }}</ion-item>
+            <ion-item ui-sref="tabs.account">{{ 'change_password' | translate }}</ion-item>
 			<ion-item ng-click="setLanguage()">{{ 'language' | translate }}</ion-item>
-			<ion-item ng-click="doLogout()">Logout</ion-item>
+			<ion-item ng-click="doLogout()">{{ 'logout' | translate }}</ion-item>
 
-			<ion-item class="item-divider">Laundry Settings</ion-item>
-			<ion-item ui-sref="tabs.myLaundry">Laundry Information</ion-item>
-			<ion-item ui-sref="tabs.manageUsers">Manage Users</ion-item>
+			<ion-item class="item-divider">{{ 'laundry_settings' | translate }}</ion-item>
+			<ion-item ui-sref="tabs.myLaundry">{{ 'laundry_info' | translate }}</ion-item>
+			<ion-item ui-sref="tabs.manageUsers">{{ 'manage_users' | translate }}</ion-item>
 
-			<ion-item class="item-divider">Pricing</ion-item>
-			<ion-item ui-sref="tabs.packages">Packages</ion-item>
-			<ion-item ui-sref="tabs.items">Items</ion-item>
+			<ion-item class="item-divider">{{ 'pricing' | translate }}</ion-item>
+			<ion-item ui-sref="tabs.packages">{{ 'packages' | translate }}</ion-item>
+			<ion-item ui-sref="tabs.items">{{ 'items' | translate }}</ion-item>
 
-			<ion-item class="item-divider">Support</ion-item>
-            <ion-item ui-sref="tabs.about">About Cekucek</ion-item>
-            <ion-item ui-sref="tabs.contact">Contact Us</ion-item>
+			<ion-item class="item-divider">{{ 'support' | translate }}</ion-item>
+            <ion-item ui-sref="tabs.about">{{ 'about_cekkucek' | translate }}</ion-item>
+            <ion-item ui-sref="tabs.contact">{{ 'contact_us' | translate }}</ion-item>
 		</ion-list>
 	</ion-content>
 </ion-view>

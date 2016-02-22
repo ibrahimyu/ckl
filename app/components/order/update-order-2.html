@@ -1,8 +1,8 @@
-<ion-view title="Update Order">
+<ion-view title="{{ 'update_order' | translate }}">
 	<ion-content class="padding">
 		<div class="list">
 			<label class="item item-select">
-				<span class="input-label">Package</span>
+				<span class="input-label">{{ 'package' | translate }}</span>
 				<select required
 					placeholder="Select Package"
 					ng-model="order.package"
@@ -10,32 +10,32 @@
 					ng-change="calculatePrice()"></select>
 			</label>
 			<div class="item item-input">
-				<span class="input-label">Weight</span>
+				<span class="input-label">{{ 'weight' | translate }}</span>
 				<stepper ng-model="order.weight" ng-change="calculatePrice()"></stepper>
 			</div>
 
 			<label class="item item-input">
-				<span class="input-label">Amount Due</span>
+				<span class="input-label">{{ 'amount_due' | translate }}</span>
 				<input class="text-right" ng-model="order.amount_due" type="number"/>
 			</label>
 			<label class="item item-input">
-				<span class="input-label">Amount Paid</span>
+				<span class="input-label">{{ 'amount_paid' | translate }}</span>
 				<input class="text-right" ng-model="order.amount_paid" type="number"/>
 			</label>
 			<label class="item item-input">
-				<span class="input-label">Expected Delivery Date</span>
+				<span class="input-label">{{ 'expected_delivery_date' | translate }}</span>
 				<input class="text-right" ng-model="order.delivery_date" type="date"/>
 			</label>
 			<label class="item item-select">
-				<span class="input-label">Processed by</span>
-				<select required placeholder="Select user" ng-model="order.processor" ng-options="user as user.name for user in users track by user.id"></select>
+				<span class="input-label">{{ 'processing_by' | translate }}</span>
+				<select required placeholder="{{ 'select_user' | translate }}" ng-model="order.processor" ng-options="user as user.name for user in users track by user.id"></select>
 			</label>
 			<label class="item item-select">
-				<span class="input-label">Delivery by</span>
-				<select required placeholder="Select user" ng-model="order.deliveryman" ng-options="user as user.name for user in users track by user.id"></select>
+				<span class="input-label">{{ 'delivery_by' | translate }}</span>
+				<select required placeholder="{{ 'select_user' | translate }}" ng-model="order.deliveryman" ng-options="user as user.name for user in users track by user.id"></select>
 			</label>
 		</div>
 
-		<button class="button button-balanced button-block" ng-click="doUpdate()">Save Changes</button>
+		<button class="button button-balanced button-block" ng-click="doUpdate()">{{ 'save_changes' | translate }}</button>
 	</ion-content>
 </ion-view>

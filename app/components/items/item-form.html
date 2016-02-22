@@ -1,20 +1,20 @@
-<ion-view title="Edit Item">
+<ion-view title="{{ 'edit_item' | translate }}">
 	<ion-content class="padding">
 		<loading-box>
 			<form class="list" name="itemForm">
 				<label class="item item-input item-floating-label">
-					<span class="input-label">Item Name</span>
-					<input type="text" placeholder="Item Name" ng-model="item.type" required>
+					<span class="input-label">{{ "item_name" | translate }}</span>
+					<input type="text" placeholder="{{ 'item_name' | translate }}" ng-model="item.type" required>
 				</label>
 
 				<label class="item item-input item-floating-label">
-					<span class="input-label">Price per item</span>
-					<input type="number" placeholder="Price " ng-model="item.price" required>
+					<span class="input-label">{{ "price_per_item" | translate }}</span>
+					<input type="number" placeholder="{{ 'price_per_item' | translate }}" ng-model="item.price" required>
 				</label>
 			</form>
 
-			<button class="button button-balanced icon icon-left ion-checkmark-round" ng-disabled="!itemForm.$valid" ng-click="save()">Save Item</button>
-			<button class="button button-stable" ui-sref="tabs.items">Back to Item List</button>
+			<button class="button button-balanced icon icon-left ion-checkmark-round" ng-disabled="!itemForm.$valid" ng-click="save()">{{ 'save' | translate }}</button>
+			<button class="button button-stable" ui-sref="tabs.items">{{ 'back' | translate }}</button>
 		</loading-box>
 	</ion-content>
 </ion-view>

@@ -1,39 +1,41 @@
-<ion-view title="Edit Laundry Profile">
+<ion-view title="{{ 'edit_laundry_profile' | translate }}">
 	<ion-content>
         <div class="padding" loading-box>
 			<form class="list" name="registerLaundryForm">
-				<div class="item item-divider">Laundry Information</div>
+				<div class="item item-divider">{{ 'laundry_info' | translate }}</div>
 				<label class="item item-input item-floating-label">
-					<span class="input-label">Laundry Name</span>
+					<span class="input-label">{{ 'laundry_name' | translate }}</span>
 					<input type="text" placeholder="Laundry Name" ng-model="laundry.laundry_name" required>
 				</label>
 				<label class="item item-input item-floating-label">
-					<span class="input-label">Slogan (optional)</span>
+					<span class="input-label">{{ 'slogan' | translate }}</span>
 					<input type="text" placeholder="Slogan (optional)" ng-model="laundry.slogan" required>
 				</label>
 				<label class="item item-input item-floating-label">
-					<span class="input-label">Address</span>
+					<span class="input-label">{{ 'address' | translate }}</span>
 					<input type="text" placeholder="Address" ng-model="laundry.address" required>
 				</label>
 				<label class="item item-input item-floating-label">
-					<span class="input-label">City</span>
+					<span class="input-label">{{ 'city' | translate }}</span>
 					<input type="text" placeholder="City" ng-model="laundry.city" required>
 				</label>
 				<label class="item item-input item-floating-label">
-					<span class="input-label">Province</span>
+					<span class="input-label">{{ 'province' | translate }}</span>
 					<input type="text" placeholder="Province" ng-model="laundry.province" required>
 				</label>
 				<label class="item item-input item-floating-label">
-					<span class="input-label">Country</span>
+					<span class="input-label">{{ 'country' | translate }}</span>
 					<input type="text" placeholder="Country" ng-model="laundry.country" required>
 				</label>
 				<label class="item item-input item-floating-label">
-					<span class="input-label">Phone Number</span>
+					<span class="input-label">{{ 'phone_number' | translate }}</span>
 					<input type="text" placeholder="Phone Number" ng-model="laundry.phone" required>
 				</label>
 			</form>
 
-			<button class="button button-balanced icon icon-left ion-checkmark" ng-click="saveChanges()">Update Profile</button>
+			<button class="button button-balanced icon icon-left ion-checkmark" ng-click="saveChanges()">
+				{{ 'save_changes' | translate }}
+			</button>
 		</div>
 	</ion-content>
 </ion-view>
