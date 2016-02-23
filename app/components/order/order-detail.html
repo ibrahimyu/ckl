@@ -48,8 +48,8 @@
 
 				<div class="item item-divider">{{ 'items' | translate }}</div>
 				<div class="item" ng-repeat="item in order.details">
-					{{ item.item_type.type }}
-					<span class="item-note">{{ item.qty }} pcs</span>
+					{{ item.type }}
+					<span class="item-note">{{ item.pivot.qty }} pcs</span>
 				</div>
 			</div>
 		</loading-box>

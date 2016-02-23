@@ -56,16 +56,12 @@ angular.module('app.controllers')
 
 .controller('updateOrder1Ctrl', function($scope, $api, $state, $stateParams) {
 	$api.get('/laundry/order/' + $stateParams.id)
-		.then(function(data) {
-			$scope.order = data;
+		.then(function(order) {
+			$scope.order = order;
 		});
 
-	$api.get('/laundry/item-types')
+	$api.get('/laundry/item-types/' + $stateParams.id)
 		.then(function(data) {
-			data.map(function(x) {
-				x.qty = 0;
-			});
-
 			$scope.itemTypes = data;
 		});
 
