@@ -94,6 +94,7 @@ angular.module('app')
 		"profile": "Profil",
 		"province": "Propinsi",
 		"refresh": "Refresh",
+		"register_laundry": "Daftar Laundry",
 		"retrieving_orders": "Mengambil daftar pesanan",
 		"retype_new_password": "Ketik Sandi Baru",
 		"save": "Simpan",

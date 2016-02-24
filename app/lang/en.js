@@ -95,6 +95,7 @@ angular.module('app')
 		"profile": "Profile",
 		"province": "State/Province",
 		"refresh": "Refresh",
+		"register_laundry": "Register Laundry",
 		"retrieving_orders": "Retrieving orders",
 		"retype_new_password": "Retype New Password",
 		"save": "Save",
