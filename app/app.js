@@ -83,7 +83,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.auth',
 
 			if (notification.event == 'message')
 			{
-				$localstorage.push('notifications', notification);
+				$localstorage.push('notifications', notification.message);
 			}
 		});
 	});

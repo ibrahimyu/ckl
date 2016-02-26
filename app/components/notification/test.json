@@ -1,0 +1,24 @@
+[{
+	"event": "message",
+	"from": "679308792960",
+	"message": "Terima kasih telah menggunakan Cek-Kucek",
+	"collapse_key": "do_not_collapse",
+	"foreground": true,
+	"payload": {
+		"payload": "here",
+		"title": "Order Completed",
+		"message": "Terima kasih telah menggunakan Cek-Kucek"
+	}
+}, {
+	"event": "message",
+	"from": "679308792960",
+	"message": "Terima kasih telah menggunakan Cek-Kucek",
+	"coldstart": false,
+	"collapse_key": "do_not_collapse",
+	"foreground": false,
+	"payload": {
+		"payload": "here",
+		"title": "Order Completed",
+		"message": "Terima kasih telah menggunakan Cek-Kucek"
+	}
+}]

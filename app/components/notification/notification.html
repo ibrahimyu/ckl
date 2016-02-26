@@ -3,9 +3,13 @@
 		<div class="list">
 			<ion-item class="item item-icon-left" ng-repeat="n in notifications" href="#/{{ n.link }}">
 				<i class="icon {{ n.icon }}"></i>
-				<h3>{{ n.subject }}</h3>
-				<p>{{ n.content }}</p>
+				<h3>{{ n.title }}</h3>
+				<p>{{ n.message }}</p>
 			</ion-item>
+
+			<div class="item" ng-if="!notifications.length">
+				{{ 'no_notifications' | translate }}
+			</div>
 		</div>
 	</ion-content>
 </ion-view>
