@@ -9,6 +9,11 @@
 					{{ 'invalid_credentials' | translate }}
 				</div>
 
+				<div class="button-bar" style="margin-bottom: 20px;">
+					<button class="button" ng-class="{ 'button-balanced': active_language == 'en' }" ng-click="setLanguage('en')">English</button>
+					<button class="button" ng-class="{ 'button-balanced': active_language == 'id' }" ng-click="setLanguage('id')">Bahasa Indonesia</button>
+				</div>
+
 				<div class="stayBot">
 					<loading-box message="Logging in..." ng-if="loggingIn"></loading-box>
 

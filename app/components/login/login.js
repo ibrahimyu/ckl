@@ -1,10 +1,18 @@
 angular.module('app.controllers')
 
-.controller('loginCtrl', function($scope, $auth, $state, $api) {
+.controller('loginCtrl', function($scope, $auth, $state, $api, $translate) {
+
 	if ($auth.isAuthenticated())
 	{
 		$state.go('tabs.home');
 	}
+
+	$scope.active_language = localStorage.getItem('lang') || 'en';
+	$scope.setLanguage = function(lang) {
+		$translate.use(lang);
+		localStorage.setItem('lang', lang);
+		$scope.active_language = lang;
+	};
 
 	$scope.user = {};
 
