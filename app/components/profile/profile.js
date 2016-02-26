@@ -7,20 +7,25 @@ angular.module('app.controllers')
 			$scope.user = data;
 		})
 		.finally(function() {
-			$scope.$broadcast('scroll.refreshComplete')
+			$scope.$broadcast('scroll.refreshComplete');
 		});
 })
 
-.controller('editProfileCtrl', function($scope, $api) {
+.controller('editProfileCtrl', function($scope, $api, $ionicPopup, $ionicHistory) {
 	$api.get('/me')
 		.then(function(data) {
 			$scope.user = data;
 		});
 
 	$scope.updateProfile = function() {
-		$api.put('/me')
+		$api.put('/customer/profile', $scope.user)
 			.then(function(data) {
-				$scope.user = data;
+				$ionicPopup.alert({
+					title: 'Success',
+					template: 'Your profile has been updated.'
+				}).then(function() {
+					$ionicHistory.goBack();
+				});
 			});
 	};
 })
@@ -31,6 +36,6 @@ angular.module('app.controllers')
 			$scope.user = data;
 		})
 		.finally(function() {
-			$scope.$broadcast('scroll.refreshComplete')
-		});;
+			$scope.$broadcast('scroll.refreshComplete');
+		});
 });

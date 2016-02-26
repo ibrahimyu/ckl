@@ -11,7 +11,7 @@ if (localStorage.getItem('debug') == 'true') {
 
 angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.auth', 'app.services', 'satellizer', 'ngCordova', 'templates', 'pascalprecht.translate'])
 
-.run(function($ionicPlatform, $ionicHistory, $ionicPopup, $auth, $state, $http, $rootScope, $api)
+.run(function($ionicPlatform, $ionicHistory, $ionicPopup, $auth, $state, $http, $rootScope, $api, $localstorage)
 {
 
 	function init()
@@ -80,8 +80,15 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.auth',
 			{
 				$api.post('/register-laundry-push', { token: notification.regid });
 			}
+
+			if (notification.event == 'message')
+			{
+				$localstorage.push('notifications', notification);
+			}
 		});
 	});
+
+	window.api = $api;
 });
 
 angular.module('app.controllers', []);

@@ -16,6 +16,12 @@ angular.module('app.services')
 		},
 		token: function() {
 			return this.get('token', null);
+		},
+		push: function(key, value) {
+			obj = JSON.parse($window.localStorage[key] || '[]');
+			obj.push(value);
+			this.setObject(key, obj);
+			return obj;
 		}
-	}
+	};
 }]);

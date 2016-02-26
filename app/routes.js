@@ -253,6 +253,16 @@ angular.module('app')
 				controller: 'editProfileCtrl'
 			}
 		}
+	})
+
+	.state('tabs.notifications', {
+		url: '/notifications',
+		views: {
+			'tab-reports': {
+				templateUrl: 'components/notification/notification.html',
+				controller: 'notificationsCtrl'
+			}
+		}
 	});
 
 

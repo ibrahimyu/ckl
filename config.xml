@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.simful.cekuceklaundry.android" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.simful.cekuceklaundry.android" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
 	<name>Cek-Kucek Laundry</name>
 	<description>
 		Cek-Kucek mobile app for laundries.
@@ -16,6 +16,7 @@
 	<preference name="BackupWebStorage" value="none"/>
 	<preference name="SplashScreen" value="screen"/>
 	<preference name="SplashScreenDelay" value="3000"/>
+	<allow-navigation href="http://www.cek-kucek.com/*" />
 	<feature name="StatusBar">
 		<param name="ios-package" value="CDVStatusBar" onload="true"/>
 	</feature>

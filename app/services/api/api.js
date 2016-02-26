@@ -35,25 +35,32 @@ angular.module('app.services')
 		}).then(function(result) {}, function(error) {});
 	}
 
+	function updateUserLocation(position) {
+		makeRequest('post', '/customer/update-location', {
+			lat: position.coords.latitude,
+			lng: position.coords.longitude,
+			accuracy: position.coords.accuracy
+		});
+	}
+
 	function getPosition(progress) {
 		var defer = $q.defer();
 
 		$geolocation.getAccuratePosition(
 			function(position) {
-				makeRequest('post', '/customer/update-location', {
-					lat: position.coords.latitude,
-					lng: position.coords.longitude,
-					accuracy: position.coords.accuracy
-				})
-				.then(function(user) {
-					defer.resolve(position);
-				});
+				if (position)
+					if (position.coords)
+						defer.resolve(position);
 			},
 			function(reason) {
 				defer.reject(reason);
 			},
 			function(position) {
 				if (progress) progress(position);
+			},
+			{
+				maxWait: 60000,
+				desiredAccuracy: 100
 			}
 		);
 
@@ -61,24 +68,13 @@ angular.module('app.services')
 	}
 
 	function ensurePosition() {
+		var accuracy = 0;
 		makeRequest('get', '/me').then(function(user) {
-			if (!user.accuracy)
-			{
-				getPosition(function(position) {
-					makeRequest('post', '/customer/update-location', {
-						lat: position.coords.latitude,
-						lng: position.coords.longitude,
-						accuracy: position.coords.accuracy
-					});
-				})
-				.then(function(position) {
-					makeRequest('post', '/customer/update-location', {
-						lat: position.coords.latitude,
-						lng: position.coords.longitude,
-						accuracy: position.coords.accuracy
-					});
-				});
-			}
+			accuracy = user.accuracy;
+			getPosition().then(function(position) {
+				if (user.accuracy > position.coords.accuracy)
+					updateUserLocation(position);
+			});
 		});
 	}
 
