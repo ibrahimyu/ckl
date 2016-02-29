@@ -9,14 +9,9 @@
 				</select>
 			</label>
 
-			<label class="item item-input" ng-if="order.customer_type == 'new'">
+			<label class="item item-input">
 				<span class="input-label">{{ 'name' | translate }}</span>
 				<input type="text" ng-model="customer.name" placeholder="Enter customer name">
-			</label>
-
-			<label class="item item-input" ng-if="order.customer_type == 'existing'">
-				<span class="input-label">{{ 'email' | translate }}</span>
-				<input type="text" ng-model="customer.email" placeholder="Enter customer e-mail">
 			</label>
 
 			<label class="item item-select">
@@ -29,12 +24,12 @@
 
 			<label class="item item-select" required>
 				<span class="input-label">{{ 'package' | translate }}</span>
-				<select required placeholder="{{ 'select_package' | translate }}" ng-model="order.package" ng-options="package as package.package_name for package in packages track by package.id"></select>
+				<select required placeholder="{{ 'package' | translate }}" ng-model="order.package" ng-options="package as package.package_name for package in packages track by package.id"></select>
 			</label>
 
 			<div class="item item-text-wrap item-icon-left" ng-if="order.package">
 				<i class="icon ion-leaf"></i>
-				{{ order.package.package_name }} ({{ order.package.price | currency: 'Rp ' | translate }}/kg, {{ order.package.processing_time }} hours)
+				{{ order.package.package_name }} ({{ order.package.price | currency: 'Rp ' }}/kg, {{ order.package.processing_time }} hours)
 			</div>
 
 			<label class="item item-select">

@@ -18,6 +18,11 @@ angular.module('app.controllers')
 			}
 		});
 
+	$api.get('/me')
+		.then(function(user) {
+			$scope.user = user;
+		});
+
 	$scope.submitOrder = function() {
 		$scope.order.package_id = $scope.order.package.id;
 		$api.post('/laundry/order', $scope.order)

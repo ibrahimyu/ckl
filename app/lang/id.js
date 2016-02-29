@@ -121,6 +121,15 @@ angular.module('app')
 		"view_order": "Lihat Pesanan",
 		"view_profile": "Lihat Profil",
 		"waiting_delivery": "Menunggu Pengiriman",
-		"weight": "Berat"
+		"weight": "Berat",
+
+		"new": "Baru",
+		"active": "Aktif",
+		"completed": "Selesai",
+
+		"edit_order": "Edit Order",
+		"edit_items": "Edit Items",
+
+		"hours": "jam"
 	});
 });

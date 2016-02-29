@@ -4,15 +4,21 @@
 			{{ 'edit' | translate }}
 		</button>
 	</ion-nav-buttons>
-	<ion-content class="has-header padding">
+	<ion-content class="padding">
 		<loading-box>
-			<div class="list">
+			<div class="list noborder">
 				<div class="item item-divider">{{ 'invoice' | translate }} #{{ order.id }}</div>
 				<a class="item item-avatar item-text-wrap" ui-sref="tabs.viewProfile({ id: order.customer.id })">
 					<img ng-src="{{ order.customer.avatar }}"/>
 					<h2>{{ order.customer.name }}</h2>
 					<p>{{ order.customer.address }}</p>
 				</a>
+
+				<div class="item" ng-show="isActive">
+					<button class="button button-block" ng-click="changeStatus()">{{ 'change_status' | translate }}...</button>
+					<button class="button button-block" ui-sref="tabs.updateOrder2({ id: order.id })">{{ 'edit_order' | translate }}</button>
+				</div>
+
 				<div class="item">
 					{{ 'package' | translate }}
 					<span class="item-note">{{ order.package.package_name }}</span>
@@ -42,15 +48,22 @@
 					<span class="item-note">{{ order.amount_due | currency: 'Rp ' }}</span>
 				</div>
 
-				<div class="item">
-					<button class="button button-balanced button-block" ng-click="changeStatus()">{{ 'change_status' | translate }}...</button>
-				</div>
+			</div>
+
+			<div class="list noborder" style="margin-bottom: 50px" ng-show="isActive">
 
 				<div class="item item-divider">{{ 'items' | translate }}</div>
+
+				<div class="item">
+					<button class="button button-block" ui-sref="tabs.updateOrder1({ id: order.id })">{{ 'edit_items' | translate }}</button>
+				</div>
+
 				<div class="item" ng-repeat="item in order.details">
 					{{ item.type }}
 					<span class="item-note">{{ item.pivot.qty }} pcs</span>
 				</div>
+
+
 			</div>
 		</loading-box>
 	</ion-content>

@@ -40,6 +40,9 @@ angular.module('app')
 
 	.state('tabs.orders', {
 		url: '/order-list',
+		params: {
+		    status: 'active',
+		},
 		views: {
 			'tab-orders': {
 				templateUrl: 'components/order/order-list.html',

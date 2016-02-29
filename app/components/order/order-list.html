@@ -4,35 +4,24 @@
 	</ion-nav-buttons>
 	<ion-content class="has-header">
 		<ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
+
+		<div class="button-bar button-small">
+			<button class="button button-stable" ng-class="{ 'button-balanced': orderStatus == 'new' }" ng-click="filterOrder('new')">{{ 'new' | translate }}</button>
+			<button class="button button-stable" ng-class="{ 'button-balanced': orderStatus == 'active' }" ng-click="filterOrder('active')">{{ 'active' | translate }}</button>
+			<button class="button button-stable" ng-class="{ 'button-balanced': orderStatus == 'completed' }" ng-click="filterOrder('completed')">{{ 'completed' | translate }}</button>
+		</div>
+
 		<div class="padding" loading-box>
+			<div class="list noborder">
+				<div class="item item-avatar order-item" ng-repeat="order in orders" ui-sref="tabs.orderDetail({ id: order.id })">
+					<img ng-src="{{ order.customer.avatar }}"/>
 
-			<div class="list">
-				<div class="item item-divider">{{ 'new_orders' | translate }}</div>
-				<div class="item order-item" ng-repeat="order in orders.new_orders" ui-sref="tabs.updateOrder1({ id: order.id })">
-					<h2>{{ 'order' | translate }} #{{ order.id }}</h2>
-					<small>{{ order.customer.name }}</small><br>
-					<small>{{ order.created_at | dateToISO | date: 'fullDate' }}</small>
+					<h2>{{ order.customer.name }}</h2>
+					<p>{{ order.amount_due | currency: 'Rp ' }}</p>
+					<p>{{ order.status }}</p>
 				</div>
 
-				<div class="item item-text-wrap" ng-if="!orders.new_orders.length">
-					{{ 'no_new_orders' | translate }}
-				</div>
-
-				<div class="item item-divider">{{ 'active_orders' | translate }}</div>
-				<div class="item order-item" ng-repeat="order in orders.active_orders" ui-sref="tabs.orderDetail({ id: order.id })">
-					<div class="item-right-pane pull-right">
-						<span>{{ order.amount_due | currency: 'Rp ' }}</span>
-						<br>
-						<span class="badge-label">
-							{{ order.status }}
-						</span>
-					</div>
-					<h2>{{ 'order' | translate }} #{{ order.id }}</h2>
-					<small>{{ order.customer.name }}</small><br>
-					<small>{{ order.created_at | dateToISO | date: 'fullDate' }}</small>
-				</div>
-
-				<div class="item item-text-wrap" ng-if="!orders.active_orders.length">
+				<div class="item item-text-wrap" ng-if="!orders.length">
 					{{ 'no_orders' | translate }}
 				</div>
 			</div>

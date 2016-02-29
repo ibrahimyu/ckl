@@ -7,8 +7,8 @@
 		<ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
 		<loading-box message="{{ 'retrieving_orders' | translate }}">
 			<div class="padding">
-				<div class="card list">
-					<div class="item item-avatar">
+				<div class="list noborder">
+					<div class="item item-avatar" ui-sref="tabs.viewProfile({ id: dash.user.id })">
 						<img ng-src="{{ dash.user.avatar }}"/>
 						<h2>{{ dash.user.name }}</h2>
 						<small>{{ dash.user.laundry.laundry_name }}</small>
@@ -16,15 +16,15 @@
 
 					<div class="item item-divider">{{ 'orders' | translate }}</div>
 
-					<div class="item" ui-sref="tabs.orders">
+					<div class="item" ui-sref="tabs.orders({ status: 'new' })">
 						{{ 'new_orders' | translate }}
 						<span class="item-note">{{ dash.new_orders }}</span>
 					</div>
-					<div class="item" ui-sref="tabs.orders">
+					<div class="item" ui-sref="tabs.orders({ status: 'active' })">
 						{{ 'active_orders' | translate }}
 						<span class="item-note">{{ dash.active_orders }}</span>
 					</div>
-					<div class="item" ui-sref="tabs.orders">
+					<div class="item" ui-sref="tabs.orders({ status: 'completed' })">
 						{{ 'waiting_delivery' | translate }}
 						<span class="item-note">{{ dash.waiting_delivery }}</span>
 					</div>

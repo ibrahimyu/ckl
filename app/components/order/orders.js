@@ -1,8 +1,14 @@
 angular.module('app.controllers')
 
-.controller('ordersCtrl', function($scope, $api) {
+.controller('ordersCtrl', function($scope, $api, $stateParams) {
+	$scope.orderStatus = $stateParams.status || 'new';
+	$scope.filterOrder = function(status)	{
+		$scope.orderStatus = status;
+		$scope.doRefresh();
+	};
+
 	$scope.doRefresh = function() {
-		$api.get('/laundry/order')
+		$api.get('/laundry/order?status=' + $scope.orderStatus)
 			.then(function(data) {
 				$scope.orders = data;
 			}).finally(function() {

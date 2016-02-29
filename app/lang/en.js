@@ -122,6 +122,15 @@ angular.module('app')
 		"view_order": "View Order",
 		"view_profile": "View Profile",
 		"waiting_delivery": "Waiting Delivery",
-		"weight": "Weight"
+		"weight": "Weight",
+
+		"new": "New",
+		"active": "Active",
+		"completed": "Completed",
+
+		"edit_order": "Edit Order",
+		"edit_items": "Edit Items",
+
+		"hours": "hours"
 	});
 });
