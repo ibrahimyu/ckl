@@ -32,6 +32,12 @@
 						</form>
 
 						<button class="button button-energized button-block" ng-click="doLogin()" ng-disabled="!loginForm.$valid">{{ 'login' | translate }}</button>
+
+						<hr>
+
+						<img ng-click="authenticate('facebook')" src="img/facebook_login.png" style="width: 185px"><br>
+						<img ng-click="authenticate('google')" src="img/google_login.png">
+
 					</div>
 
 					<div class="text-center">

@@ -130,6 +130,16 @@ angular.module('app')
 		"edit_order": "Edit Order",
 		"edit_items": "Edit Items",
 
-		"hours": "jam"
+		"hours": "jam",
+		"select_language": "Pilih Bahasa",
+
+		"supports_per_weight": "Harga Kiloan",
+		"supports_per_item": "Harga Satuan",
+		"supports_delivery": "Layanan Delivery",
+		"default_currency": "Mata Uang",
+		"currency_symbol": "Simbol Mata Uang",
+		"operational_hours": "Jam Operasional",
+		"delivery_schedule": "Jam Antar/Jemput",
+		"enter_laundry_description": "Masukkan informasi lainnya disini..."
 	});
 });

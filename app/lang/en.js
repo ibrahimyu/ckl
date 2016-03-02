@@ -131,6 +131,16 @@ angular.module('app')
 		"edit_order": "Edit Order",
 		"edit_items": "Edit Items",
 
-		"hours": "hours"
+		"hours": "hours",
+		"select_language": "Select Language",
+
+		"supports_per_weight": "Per-weight Pricing",
+		"supports_per_item": "Per-item Pricing",
+		"supports_delivery": "Supports Delivery",
+		"default_currency": "Default Currency",
+		"currency_symbol": "Currency Symbol",
+		"operational_hours": "Operational Hours",
+		"delivery_schedule": "Delivery Schedule",
+		"enter_laundry_description": "Enter laundry description..."
 	});
 });

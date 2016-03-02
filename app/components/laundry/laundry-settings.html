@@ -1,0 +1,36 @@
+<ion-view title="{{ 'laundry_settings' | translate }}">
+	<ion-content>
+		<div class="padding" loading-box>
+			<form class="list" name="laundrySettingsForm">
+				<ion-toggle ng-model="laundry.supports_per_weight" ng-true-value="1" ng-false-value="0">{{ 'supports_per_weight' | translate }}</ion-toggle>
+				<ion-toggle ng-model="laundry.supports_per_item" ng-true-value="1" ng-false-value="0">{{ 'supports_per_item' | translate }}</ion-toggle>
+				<ion-toggle ng-model="laundry.supports_delivery" ng-true-value="1" ng-false-value="0">{{ 'supports_delivery' | translate }}</ion-toggle>
+				<label class="item item-select" required>
+					<span class="input-label">{{ 'default_currency' | translate }}</span>
+					<select required ng-change="updateCurrency()" ng-model="laundry.selected_currency" ng-options="currency as currency.name_plural for currency in currencies"></select>
+				</label>
+				<label class="item item-input">
+					<span class="input-label">{{ 'currency_symbol' | translate }}</span>
+					<input class="text-right" type="text" ng-model="laundry.currency_symbol" placeholder="e.g. $, Rp">
+				</label>
+				<label class="item item-input">
+					<span class="input-label">{{ 'operational_hours' | translate }}</span>
+					<input class="text-right" type="text" ng-model="laundry.operational_hours" placeholder="8am - 4pm">
+				</label>
+				<label class="item item-input">
+					<span class="input-label">{{ 'delivery_schedule' | translate }}</span>
+					<input class="text-right" type="text" ng-model="laundry.delivery_schedule" placeholder="4pm daily">
+				</label>
+				<div class="item">
+					<textarea ng-model="laundry.notes" placeholder="{{ 'enter_laundry_description' | translate }}" style="min-height: 200px; width: 100%"></textarea>
+				</div>
+			</form>
+
+			<button class="button button-balanced icon icon-left ion-checkmark" ng-click="saveChanges()">
+				{{ 'save_changes' | translate }}
+			</button>
+
+			{{ selected_currency | json }}
+		</div>
+	</ion-content>
+</ion-view>

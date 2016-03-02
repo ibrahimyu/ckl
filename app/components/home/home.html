@@ -6,7 +6,7 @@
 	<ion-content class="has-header">
 		<ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
 		<loading-box message="{{ 'retrieving_orders' | translate }}">
-			<div class="padding">
+			<div class="">
 				<div class="list noborder">
 					<div class="item item-avatar" ui-sref="tabs.viewProfile({ id: dash.user.id })">
 						<img ng-src="{{ dash.user.avatar }}"/>

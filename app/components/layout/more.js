@@ -19,6 +19,7 @@ angular.module('app.controllers')
 				{ id: 'en', text: 'English' },
 				{ id: 'id', text: 'Indonesia' }
 			],
+			titleText: 'Select Language',
 			cancelText: 'Cancel',
 			buttonClicked: function(index) {
 				var langs = ['en', 'id'];

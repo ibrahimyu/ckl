@@ -1,5 +1,5 @@
 <ion-view view-title="{{ 'more' | translate }}">
-	<ion-content class="padding">
+	<ion-content class="">
         <div class="list noborder">
 			<ion-item class="item-divider">
 				{{ 'account_settings' | translate }}
@@ -27,6 +27,10 @@
 			<ion-item ui-sref="tabs.myLaundry" class="item-icon-left">
 				<i class="icon ion-briefcase"></i>
 				{{ 'laundry_info' | translate }}
+			</ion-item>
+			<ion-item ui-sref="tabs.laundrySettings" class="item-icon-left">
+				<i class="icon ion-wrench"></i>
+				{{ 'laundry_settings' | translate }}
 			</ion-item>
 			<ion-item ui-sref="tabs.manageUsers" class="item-icon-left">
 				<i class="icon ion-person-stalker"></i>

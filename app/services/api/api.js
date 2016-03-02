@@ -27,6 +27,7 @@ angular.module('app.services')
 	}
 
 	function registerPush(userId) {
+		if (window.plugins)
 		$cordovaPush.register({
 			'badge': 'true',
 			'sound': 'true',

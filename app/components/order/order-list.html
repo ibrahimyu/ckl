@@ -5,15 +5,15 @@
 	<ion-content class="has-header">
 		<ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
 
-		<div class="button-bar button-small">
+		<div class="button-bar">
 			<button class="button button-stable" ng-class="{ 'button-balanced': orderStatus == 'new' }" ng-click="filterOrder('new')">{{ 'new' | translate }}</button>
 			<button class="button button-stable" ng-class="{ 'button-balanced': orderStatus == 'active' }" ng-click="filterOrder('active')">{{ 'active' | translate }}</button>
 			<button class="button button-stable" ng-class="{ 'button-balanced': orderStatus == 'completed' }" ng-click="filterOrder('completed')">{{ 'completed' | translate }}</button>
 		</div>
 
-		<div class="padding" loading-box>
+		<div loading-box>
 			<div class="list noborder">
-				<div class="item item-avatar order-item" ng-repeat="order in orders" ui-sref="tabs.orderDetail({ id: order.id })">
+				<div class="item item-avatar order-item" ng-repeat="order in orders.data" ui-sref="tabs.orderDetail({ id: order.id })">
 					<img ng-src="{{ order.customer.avatar }}"/>
 
 					<h2>{{ order.customer.name }}</h2>
@@ -21,7 +21,9 @@
 					<p>{{ order.status }}</p>
 				</div>
 
-				<div class="item item-text-wrap" ng-if="!orders.length">
+				<paginator source="orders"></paginator>
+
+				<div class="item item-text-wrap" ng-if="!orders.data.length">
 					{{ 'no_orders' | translate }}
 				</div>
 			</div>

@@ -2,10 +2,10 @@ angular.module('app.controllers')
 
 .controller('loginCtrl', function($scope, $auth, $state, $api, $translate) {
 
-	if ($auth.isAuthenticated())
+	/*if ($auth.isAuthenticated())
 	{
 		$state.go('tabs.home');
-	}
+	}*/
 
 	$scope.active_language = localStorage.getItem('lang') || 'en';
 	$scope.setLanguage = function(lang) {
@@ -26,6 +26,7 @@ angular.module('app.controllers')
 
 		$auth.login(user)
 			.then(function(response) {
+				$auth.setToken(response);
 				$api.get('/me')
 					.then(function(user) {
 						$api.registerPush();
@@ -43,6 +44,13 @@ angular.module('app.controllers')
 			})
 			.finally(function() {
 				$scope.loggingIn = false;
+			});
+	};
+
+	$scope.authenticate = function(provider) {
+		$auth.authenticate(provider)
+			.then(function(response) {
+				$state.go('tabs.home');
 			});
 	};
 });

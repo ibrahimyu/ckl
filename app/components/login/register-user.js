@@ -12,17 +12,19 @@ angular.module('app.controllers')
 		$scope.loading = true;
 		$auth.signup($scope.user)
 			.then(function(response) {
-				$auth.login($scope.user)
+				$auth.setToken(response);
+				$api.registerPush();
+				$state.go('registerLaundry');
+				/*$auth.login($scope.user)
 					.then(function(response) {
-						$api.registerPush();
-						$state.go('registerLaundry');
+
 					})
 					.catch(function(response) {
 						$scope.loginError = true;
 					})
 					.finally(function() {
 						$scope.loggingIn = false;
-					});
+					});*/
 			})
 			.catch(function(response) {
 				$scope.errors = response;

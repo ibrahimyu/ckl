@@ -25,7 +25,10 @@ angular.module('app')
 	.state('tabs', {
 		url: '/tabs',
 		abstract: true,
-		templateUrl: 'components/layout/tabs.html'
+		templateUrl: 'components/layout/tabs.html',
+		data: {
+			checkAuthLaundry: true
+		}
 	})
 
 	.state('tabs.home', {
@@ -140,6 +143,16 @@ angular.module('app')
 		}
 	})
 
+	.state('tabs.laundrySettings', {
+		url: '/laundry-settings',
+		views: {
+			'tab-more': {
+				controller: 'laundrySettingsCtrl',
+				templateUrl: 'components/laundry/laundry-settings.html'
+			}
+		}
+	})
+
 	.state('tabs.items', {
 		cache: false,
 		url: '/items',
@@ -200,14 +213,6 @@ angular.module('app')
 				controller: 'editPackageCtrl'
 			}
 		}
-	})
-
-	.state('tabs.laundryItems', {
-
-	})
-
-	.state('tabs.editLaundryItem', {
-
 	})
 
 	.state('tabs.manageUsers', {

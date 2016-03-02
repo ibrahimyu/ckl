@@ -70,11 +70,8 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.auth',
 		}, 100);
 	}
 
-	$ionicPlatform.ready(function() {
-		init();
-		authenticate();
-		defineExitState();
-
+	function subscribePush()
+	{
 		$rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
 			if (notification.event == 'registered')
 			{
@@ -86,9 +83,26 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.auth',
 				$localstorage.push('notifications', notification.message);
 			}
 		});
-	});
+	}
 
-	window.api = $api;
+	function checkAuthLaundry()
+	{
+		$rootScope.$on('$stateChangeStart', function(event, toState) {
+			var check = toState.data && toState.data.checkAuthLaundry;
+			if (check && !$auth.isAuthenticated()) {
+				event.preventDefault();
+				$state.go('login');
+			}
+		});
+	}
+
+	$ionicPlatform.ready(function() {
+		init();
+		authenticate();
+		defineExitState();
+		subscribePush();
+		checkAuthLaundry();
+	});
 });
 
 angular.module('app.controllers', []);

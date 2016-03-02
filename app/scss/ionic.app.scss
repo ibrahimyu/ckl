@@ -28,6 +28,7 @@ $dark: #444 !default;
 $pink: #FCCFFF;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+//@import "app/scss/rrssb.scss";
 
 .pull-right {
 	float: right;
@@ -62,6 +63,7 @@ $pink: #FCCFFF;
 
 .userinfo {
 	text-align: center;
+	margin-top: 15px;
 
 	img {
 		border-radius: 50%;
@@ -203,4 +205,23 @@ stepper {
 .platform-android .action-sheet .action-sheet-title,
 .platform-android .action-sheet .button {
 	text-align: center;
+}
+
+.paginator {
+	text-align: center;
+	vertical-align: center;
+	margin-top: 10px;
+
+	.button-back {
+		float: left;
+	}
+
+	.button-next {
+		float: right;
+	}
+
+	.indicator {
+		display: inline-block;
+		margin-top: 15px;
+	}
 }
