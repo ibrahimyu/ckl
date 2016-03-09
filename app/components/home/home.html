@@ -7,12 +7,21 @@
 		<ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
 		<loading-box message="{{ 'retrieving_orders' | translate }}">
 			<div class="">
-				<div class="list noborder">
-					<div class="item item-avatar" ui-sref="tabs.viewProfile({ id: dash.user.id })">
+				<div class="list noborder" style="margin-bottom: 0">
+					<div class="item item-avatar" ui-sref="tabs.more">
 						<img ng-src="{{ dash.user.avatar }}"/>
 						<h2>{{ dash.user.name }}</h2>
 						<small>{{ dash.user.laundry.laundry_name }}</small>
 					</div>
+				</div>
+
+				<div class="text-center" ng-if="!dash.user.laundry_id">
+					<p>{{ 'laundry_not_registered' | translate }}</p>
+
+					<button class="button button-balanced" ui-sref="registerLaundry">{{ 'register_laundry' | translate }}</button>
+				</div>
+
+				<div class="list noborder" ng-if="dash.user.laundry_id">
 
 					<div class="item item-divider">{{ 'orders' | translate }}</div>
 

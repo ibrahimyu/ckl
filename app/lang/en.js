@@ -141,6 +141,8 @@ angular.module('app')
 		"currency_symbol": "Currency Symbol",
 		"operational_hours": "Operational Hours",
 		"delivery_schedule": "Delivery Schedule",
-		"enter_laundry_description": "Enter laundry description..."
+		"enter_laundry_description": "Enter laundry description...",
+
+		"laundry_not_registered": "Please provide information about your laundry."
 	});
 });

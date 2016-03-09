@@ -42,7 +42,7 @@ angular.module('app')
 	})
 
 	.state('tabs.orders', {
-		url: '/order-list',
+		url: '/order-list?status',
 		params: {
 		    status: 'active',
 		},
@@ -246,7 +246,7 @@ angular.module('app')
 	.state('tabs.viewProfile', {
 		url: '/viewProfile/:id',
 		views: {
-			'tab-more': {
+			'tab-reports': {
 				templateUrl: 'components/profile/profile.html',
 				controller: 'profileCtrl'
 			}
@@ -256,7 +256,7 @@ angular.module('app')
 	.state('tabs.editProfile', {
 		url: '/editProfile',
 		views: {
-			'tab-more': {
+			'tab-reports': {
 				templateUrl: 'components/profile/edit-profile.html',
 				controller: 'editProfileCtrl'
 			}

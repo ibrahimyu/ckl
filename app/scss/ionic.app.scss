@@ -30,8 +30,17 @@ $pink: #FCCFFF;
 @import "www/lib/ionic/scss/ionic";
 //@import "app/scss/rrssb.scss";
 
+.bar button.button-clear.button-subheader {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
 .pull-right {
 	float: right;
+}
+
+.nobortop {
+	border-top: none;
 }
 
 .mbot {

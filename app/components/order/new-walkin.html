@@ -27,7 +27,7 @@
 				<select required placeholder="{{ 'package' | translate }}" ng-model="order.package" ng-options="package as package.package_name for package in packages track by package.id"></select>
 			</label>
 
-			<div class="item item-text-wrap item-icon-left" ng-if="order.package">
+			<div class="item item-text-wrap item-icon-left nobortop" ng-if="order.package">
 				<i class="icon ion-leaf"></i>
 				{{ order.package.package_name }} ({{ order.package.price | currency: 'Rp ' }}/kg, {{ order.package.processing_time }} hours)
 			</div>
@@ -37,25 +37,25 @@
 				<select required ng-model="order.delivery_to">
 					<option value="home">{{ 'home' | translate }}</option>
 					<option value="current">{{ 'take_from_here' | translate }}</option>
-					<option value="custom">{{ 'custom_address' | translate }}...</option>
+					<option value="cu nobortopstom">{{ 'custom_address' | translate }}...</option>
 				</select>
 			</label>
 
-			<div class="item item-text-wrap item-icon-left" ng-if="order.delivery_to == 'home'">
+			<div class="item item-text-wrap item-icon-left nobortop" ng-if="order.delivery_to == 'home'">
 				<i class="icon ion-location"></i> {{ user.address }}
 			</div>
 
-			<div class="item item-text-wrap item-icon-left" ng-if="order.delivery_to == 'current' && delivery_address">
+			<div class="item item-text-wrap item-icon-left nobortop" ng-if="order.delivery_to == 'current' && delivery_address">
 				<i class="icon ion-location"></i> {{ delivery_address }}
 			</div>
 
-			<div class="item item-text-wrap item-avatar" ng-if="order.delivery_to == 'current' && !delivery_address">
+			<div class="item item-text-wrap item-avatar nobortop" ng-if="order.delivery_to == 'current' && !delivery_address">
 				<img src="img/ripple.svg"/>
 				{{ 'getting_current_location' | translate }}<br>
 				<button class="button button-stable button-small" ng-click="refreshLocation()">{{ 'refresh' | translate }}</button>
 			</div>
 
-			<div class="item" ng-if="order.delivery_to == 'custom'">
+			<div class="item nobortop" ng-if="order.delivery_to == 'custom'">
 				<textarea ng-model="order.custom_address" placeholder="Enter Custom Address..." style="min-height: 200px; width: 100%"></textarea>
 			</div>
 

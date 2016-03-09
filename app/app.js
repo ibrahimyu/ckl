@@ -35,15 +35,6 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.auth',
 			// Register for push notifications, and asynchronously detect their geolocation
 			$api.registerPush();
 			$api.ensurePosition();
-
-			// Even when user is logged in, we need to check if laundry has been set up!
-			$api.get('/me')
-				.then(function(user) {
-					if ( ! user.laundry_id)
-					{
-						$state.go('registerLaundry');
-					}
-				});
 		}
 	}
 
