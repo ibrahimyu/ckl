@@ -243,6 +243,16 @@ angular.module('app')
 		}
 	})
 
+	.state('tabs.promote', {
+		url: '/promote',
+		views: {
+			'tab-more': {
+				templateUrl: 'components/promote/promote.html',
+				controller: 'promoteCtrl'
+			}
+		}
+	})
+
 	.state('tabs.viewProfile', {
 		url: '/viewProfile/:id',
 		views: {

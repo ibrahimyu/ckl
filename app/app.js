@@ -96,7 +96,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.directives', 'app.auth',
 	});
 });
 
-angular.module('app.controllers', []);
+angular.module('app.controllers', ['ionic', 'satellizer', 'app.services', 'app.directives', 'ngCordova', 'pascalprecht.translate']);
 angular.module('app.directives', []);
 angular.module('app.services', []);
 angular.module('templates', []);

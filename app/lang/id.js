@@ -140,6 +140,9 @@ angular.module('app')
 		"currency_symbol": "Simbol Mata Uang",
 		"operational_hours": "Jam Operasional",
 		"delivery_schedule": "Jam Antar/Jemput",
-		"enter_laundry_description": "Masukkan informasi lainnya disini..."
+		"enter_laundry_description": "Masukkan informasi lainnya disini...",
+
+		"laundry_not_registered": "Silakan masukkan informasi tentang laundry anda.",
+		"promote_laundry": "Promosikan Laundry"
 	});
 });

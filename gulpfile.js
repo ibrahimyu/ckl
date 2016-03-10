@@ -11,10 +11,11 @@ var inject = require('gulp-inject');
 var templateCache = require('gulp-angular-templatecache');
 var uglify = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');
+var karma = require('karma').Server;
 
 var paths = {
 	sass: ['./app/scss/**/*.scss'],
-	scripts: ['app/**/*.js']
+	scripts: ['app/**/*.js', '!./app/**/*.spec.js']
 };
 
 var indexPage = gulp.src('./app/index.html');
@@ -38,7 +39,7 @@ function styles(done) {
 }
 
 function copy() {
-	return gulp.src(['./app/**/*.js'])
+	return gulp.src(paths.scripts)
 		.pipe(gulp.dest('./www/js/'));
 }
 
@@ -73,6 +74,13 @@ function watch() {
 	gulp.watch('./app/**/*.js', copy);
 	gulp.watch('./app/**/*.html', templates);
 }
+
+gulp.task('test', function(done) {
+	new karma({
+		configFile: __dirname + '/karma.conf.js',
+		singleRun: true
+	}, done).start();
+});
 
 gulp.task(clean);
 gulp.task(styles);

@@ -143,6 +143,7 @@ angular.module('app')
 		"delivery_schedule": "Delivery Schedule",
 		"enter_laundry_description": "Enter laundry description...",
 
-		"laundry_not_registered": "Please provide information about your laundry."
+		"laundry_not_registered": "Please provide information about your laundry.",
+		"promote_laundry": "Promote Laundry"
 	});
 });
