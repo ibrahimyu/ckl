@@ -6,7 +6,10 @@ angular.module('app')
 		'promote_page_title_1': "Promote your laundry to social networks",
 		'promote_page_text_1': "By using social networks, you can easily gain visibility to nearby people.",
 		"promote_page_text_2": "Promoting your laundry is very easy. Click the button below, and choose networks to share.",
-		"promote_now": "Promote Now"
+		"promote_now": "Promote Now",
+		"social_promote_subject": "{{laundry_name}} | {{slogan}}",
+		"social_promote_message": "Do your laundry with {{laundry_name}}. Order now!",
+		"order_v": "Order"
 	});
 
 	$translateProvider.translations('id', {
@@ -14,6 +17,9 @@ angular.module('app')
 		'promote_page_title_1': "Promosikan laundry anda ke jejaring sosial",
 		'promote_page_text_1': "Dengan menggunakan jejaring sosial seperti Facebook dan Twitter, anda bisa lebih terlihat ke orang-orang di sekitar anda.",
 		"promote_page_text_2": "Mempromosikan laundry anda sangat mudah. Klik tombol di bawah ini, dan pilih jejaring sosial yang anda inginkan.",
-		"promote_now": "Promosikan Sekarang"
+		"promote_now": "Promosikan Sekarang",
+		"social_promote_subject": "{{laundry_name}} | {{slogan}}",
+		"social_promote_message": "Laundry? Di {{laundry_name}} aja! Pesan sekarang.",
+		"order_v": "Pesan"
 	});
 });

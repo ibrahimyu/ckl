@@ -143,6 +143,8 @@ angular.module('app')
 		"enter_laundry_description": "Masukkan informasi lainnya disini...",
 
 		"laundry_not_registered": "Silakan masukkan informasi tentang laundry anda.",
-		"promote_laundry": "Promosikan Laundry"
+		"promote_laundry": "Promosikan Laundry",
+
+		"search": "Cari"
 	});
 });

@@ -1,6 +1,6 @@
 <ion-view title="{{ 'promote_laundry' | translate }}">
 	<ion-content>
-		<div class="card list noborder">
+		<div class="list noborder">
 			<div class="item item-text-wrap">
 				<b>{{ 'promote_page_title_1' | translate }}</b>
 			</div>
@@ -10,6 +10,18 @@
 			<div class="item item-text-wrap">
 				{{ 'promote_page_text_2' | translate }}
 			</div>
+		</div>
+
+		<div class="card list noborder">
+			<div class="item item-avatar item-text-wrap">
+				<img src="img/ionic.png">
+				<h3>{{ share.subject }}</h3>
+				<p>{{ share.message }}</p>
+				<button class="button button-balanced button-small">{{ 'order_v' | translate }}</button>
+			</div>
+		</div>
+
+		<div class="list noborder">
 			<div class="item">
 				<button class="button button-balanced icon-left ion-share" ng-click="doPromote()">{{ 'promote_now' | translate }}</button>
 			</div>

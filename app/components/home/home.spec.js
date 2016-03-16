@@ -29,5 +29,15 @@ describe('homeCtrl', function() {
 			$httpBackend.flush();
 			expect($scope.dash).toContain('dash');
 		});
+
+		xit('tells spinner to stop when finished loading', function() {
+			$httpBackend.expectGET(ap + '/laundry/home');
+			createController();
+			$httpBackend.flush();
+
+			$httpBackend.verifyNoOutstandingExpectation();
+			$httpBackend.verifyNoOutstandingRequest();
+			expect($scope.loadingComplete).toBe(true);
+		});
 	});
 });

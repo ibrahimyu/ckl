@@ -1,14 +1,18 @@
 angular.module('app.controllers')
 
-.controller('ordersCtrl', function($scope, $api, $stateParams) {
+.controller('ordersCtrl', function($scope, $api, $stateParams, $ionicActionSheet) {
 	$scope.orderStatus = $stateParams.status || 'new';
-	$scope.filterOrder = function(status)	{
+	$scope.sortBy = $stateParams.sort || 'created_at';
+	$scope.sortAsc = false;
+
+	$scope.filterOrder = function(status) {
 		$scope.orderStatus = status;
 		$scope.doRefresh();
 	};
 
 	$scope.doRefresh = function() {
-		$api.get('/laundry/order?status=' + $scope.orderStatus)
+		$scope.loadingComplete = false;
+		$api.get('/laundry/order?status=' + $scope.orderStatus + '&sort=' + $scope.sortBy + '&asc=' + $scope.sortAsc)
 			.then(function(data) {
 				$scope.orders = data;
 			}).finally(function() {
@@ -17,6 +21,45 @@ angular.module('app.controllers')
 	};
 
 	$scope.doRefresh();
+
+	$scope.showSearch = false;
+	$scope.toggleSearch = function() {
+		$scope.showSearch = !$scope.showSearch;
+	};
+
+	$scope.showSortBy = function() {
+
+		var hideSheet = $ionicActionSheet.show({
+			buttons: [
+				{ value: 'name', text: 'Customer Name', asc: true },
+				{ value: 'delivery_date', text: 'Delivery Date', asc: false },
+				{ value: 'created_at', text: 'Order Date', asc: false },
+				{ value: 'status', text: 'Status', asc: true },
+				{ value: 'weight', text: 'Weight', asc: true }
+			],
+			titleText: 'Sort by',
+			cancelText: 'Cancel',
+			cancel: function() {
+
+			},
+			buttonClicked: function(index, item) {
+				$scope.sortBy = item.value;
+				$scope.sortAsc = item.asc ? 'true' : 'false';
+				$scope.doRefresh();
+				hideSheet();
+			}
+		});
+
+	};
+
+	$scope.doSearch = function() {
+		$api.get('/laundry/order/search?q=' + $scope.searchQuery)
+			.then(function(data) {
+				$scope.orders = data;
+			}).finally(function() {
+				$scope.$broadcast('scroll.refreshComplete');
+			});
+	};
 })
 
 .controller('orderDetailCtrl', function($scope, $api, $stateParams, $ionicActionSheet) {
@@ -31,23 +74,34 @@ angular.module('app.controllers')
 
 	$scope.changeStatus = function() {
 		var hideSheet = $ionicActionSheet.show({
-			buttons: [
-				{ text: 'Pre-order' },
-				{ text: 'Moving to house' },
-				{ text: 'In-house' },
-				{ text: 'Washing' },
-				{ text: 'Drying' },
-				{ text: 'Ironing' },
-				{ text: 'Pre-delivery' },
-				{ text: 'Delivering' },
-				{ text: 'Completed' },
-				{ text: 'Cancelled' }
-			],
+			buttons: [{
+				text: 'Pre-order'
+			}, {
+				text: 'Moving to house'
+			}, {
+				text: 'In-house'
+			}, {
+				text: 'Washing'
+			}, {
+				text: 'Drying'
+			}, {
+				text: 'Ironing'
+			}, {
+				text: 'Pre-delivery'
+			}, {
+				text: 'Delivering'
+			}, {
+				text: 'Completed'
+			}, {
+				text: 'Cancelled'
+			}],
 			cancelText: 'Cancel',
 			buttonClicked: function(index) {
 				var statuses = ['Pre-order', 'Moving to house', 'In-house', 'Washing', 'Drying', 'Ironing', 'Pre-delivery', 'Delivering', 'Completed', 'Cancelled'];
 				$scope.order.status = statuses[index];
-				$api.put('/laundry/order/' + $stateParams.id, { status: statuses[index] })
+				$api.put('/laundry/order/' + $stateParams.id, {
+						status: statuses[index]
+					})
 					.then(function(data) {
 
 					});
@@ -75,7 +129,9 @@ angular.module('app.controllers')
 		$scope.order.itemTypes = $scope.itemTypes;
 		$api.put('/laundry/order/' + $stateParams.id, $scope.order)
 			.then(function(data) {
-				$state.go('tabs.updateOrder2', { id: $stateParams.id });
+				$state.go('tabs.updateOrder2', {
+					id: $stateParams.id
+				});
 			});
 	};
 })
@@ -97,8 +153,7 @@ angular.module('app.controllers')
 			$scope.packages = packages;
 		});
 
-	$scope.calculatePrice = function()
-	{
+	$scope.calculatePrice = function() {
 		$scope.order.amount_due = $scope.order.package.price * $scope.order.weight;
 		$scope.order.amount_paid = $scope.order.package.price * $scope.order.weight;
 		$scope.order.delivery_date = moment().add($scope.order.package.processing_time, 'h').toDate();
@@ -111,7 +166,9 @@ angular.module('app.controllers')
 		$scope.order.delivery_by = $scope.order.deliveryman.id;
 		$api.put('/laundry/order/' + $stateParams.id, $scope.order)
 			.then(function(data) {
-				$state.go('tabs.orderDetail', {  id: $stateParams.id });
+				$state.go('tabs.orderDetail', {
+					id: $stateParams.id
+				});
 			});
 	};
 })

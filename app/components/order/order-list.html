@@ -2,17 +2,31 @@
 	<ion-nav-buttons side="right">
 		<button class="button icon-left ion-plus" ui-sref="tabs.newWalkin">{{ 'new_walk_in' | translate }}</button>
 	</ion-nav-buttons>
-	<ion-header-bar class="bar bar-subheader text-center">
-		<button class="button button-clear button-subheader" ng-class="{ 'button-balanced': orderStatus == 'new' }" ng-click="filterOrder('new')">{{ 'new' | translate }}</button>
-		<button class="button button-clear button-subheader" ng-class="{ 'button-balanced': orderStatus == 'active' }" ng-click="filterOrder('active')">{{ 'active' | translate }}</button>
-		<button class="button button-clear button-subheader" ng-class="{ 'button-balanced': orderStatus == 'completed' }" ng-click="filterOrder('completed')">{{ 'completed' | translate }}</button>
-		<span class="pull-right">
-			<button class="button button-stable icon"><i class="icon fa fa-sort-alpha-asc"></i></button>
-			<button class="button button-stable icon"><i class="icon fa fa-search"></i></button>
 
+	<ion-header-bar class="bar bar-subheader text-center" ng-class="{ 'item-input-inset': showSearch }">
+		<label class="item-input-wrapper" ng-show="showSearch">
+			<i class="icon ion-ios-search placeholder-icon"></i>
+			<input type="text" ng-model="searchQuery" placeholder="{{ 'search' | translate }}" ng-keyup="$event.keyCode == 13 && doSearch()">
+		</label>
+
+		<span ng-hide="showSearch">
+			<button class="button button-clear button-subheader" ng-class="{ 'button-balanced': orderStatus == 'new' }" ng-click="filterOrder('new')">{{ 'new' | translate }}</button>
+			<button class="button button-clear button-subheader" ng-class="{ 'button-balanced': orderStatus == 'active' }" ng-click="filterOrder('active')">{{ 'active' | translate }}</button>
+			<button class="button button-clear button-subheader" ng-class="{ 'button-balanced': orderStatus == 'completed' }" ng-click="filterOrder('completed')">{{ 'completed' | translate }}</button>
 		</span>
+
+		<span class="pull-right">
+			<button class="button button-stable icon" ng-click="showSortBy()" ng-hide="showSearch"><i class="icon fa" ng-class="sortAsc == 'true' ? 'fa-sort-alpha-asc' : 'fa-sort-alpha-desc'"></i></button>
+			<button class="button button-stable icon" ng-click="toggleSearch()" ng-hide="showSearch"><i class="icon fa fa-search"></i></button>
+			<button class="button button-stable icon" ng-click="toggleSearch()" ng-show="showSearch"><i class="icon ion-close"></i></button>
+		</span>
+
 	</ion-header-bar>
-	<ion-content class="has-header">
+
+	<ion-content class="has-header has-subheader">
+
+
+
 		<ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
 
 		<div loading-box>
